@@ -1,2 +1,3 @@
-# pokesim
-Simulador de batalhas Pokemon com base nos jogos Red e Blue.
+# PokeSim
+### Simulador de batalhas Pokemon com base nos jogos Red e Blue.
+Implementado em Java como trabalho para a disciplina de Paradigma de Programação Imperativa e Orientada a Objetos.
