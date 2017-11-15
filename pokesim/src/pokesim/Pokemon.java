@@ -22,8 +22,48 @@ public class Pokemon {
     private Especie especie;
     private List<Ataque> ataques;
 
-    public double valorAtributo(double x) {
-        return x;
+    Pokemon(int id, int level) {
+        setLevel(level);
+        setHpMax(this.especie.calcularAtributo(Atributo.HPMAX, level));
+        setHpAtual(this.especie.calcularAtributo(Atributo.HPATUAL, level));
+        setAtk(this.especie.calcularAtributo(Atributo.ATK, level));
+        setDef(this.especie.calcularAtributo(Atributo.DEF, level));
+        setSpe(this.especie.calcularAtributo(Atributo.SPE, level));
+        setSpd(this.especie.calcularAtributo(Atributo.SPD, level));
+        setModifierAccuracy(0);
+        setModifierEvasion(0);
+        setModifierAtk(0);
+        setModifierDef(0);
+        setModifierSpe(0);
+        setModifierSpd(0);
+        setConfusion(false);
+        setFlinch(false);
+        setStatus(Status.OK);
+    }
+
+    public double valorAtributo(Atributo atrib) {
+        switch (atrib) {
+            case ATK:
+                return ((this.atk) * (Math.max(2, 2 + modifierAtk) / Math.max(2, 2 - modifierAtk)));
+
+            case DEF:
+                return ((this.def) * (Math.max(2, 2 + modifierDef) / Math.max(2, 2 - modifierDef)));
+
+            case SPE:
+                return ((this.spe) * (Math.max(2, 2 + modifierSpe) / Math.max(2, 2 - modifierSpe)));
+
+            case SPD:
+                return ((this.spd) * (Math.max(2, 2 + modifierSpd) / Math.max(2, 2 - modifierSpd)));
+
+            case HPMAX:
+                return this.hpMax;
+
+            case HPATUAL:
+                return this.hpAtual;
+
+            default:
+                return 0;
+        }
     }
 
     public Status getStatus() {
@@ -38,10 +78,6 @@ public class Pokemon {
         this.level = level;
     }
 
-    public double getHpAtual() {
-        return hpAtual;
-    }
-
     public void setHpAtual(double hpAtual) {
         this.hpAtual = hpAtual;
     }
@@ -54,80 +90,40 @@ public class Pokemon {
         this.hpMax = hpMax;
     }
 
-    public double getAtk() {
-        return atk;
-    }
-
     public void setAtk(double atk) {
         this.atk = atk;
-    }
-
-    public double getDef() {
-        return def;
     }
 
     public void setDef(double def) {
         this.def = def;
     }
 
-    public double getSpe() {
-        return spe;
-    }
-
     public void setSpe(double spe) {
         this.spe = spe;
-    }
-
-    public double getSpd() {
-        return spd;
     }
 
     public void setSpd(double spd) {
         this.spd = spd;
     }
 
-    public int getModifierAccuracy() {
-        return modifierAccuracy;
-    }
-
     public void setModifierAccuracy(int modifierAccuracy) {
         this.modifierAccuracy = modifierAccuracy;
-    }
-
-    public int getModifierEvasion() {
-        return modifierEvasion;
     }
 
     public void setModifierEvasion(int modifierEvasion) {
         this.modifierEvasion = modifierEvasion;
     }
 
-    public int getModifierAtk() {
-        return modifierAtk;
-    }
-
     public void setModifierAtk(int modifierAtk) {
         this.modifierAtk = modifierAtk;
-    }
-
-    public int getModifierDef() {
-        return modifierDef;
     }
 
     public void setModifierDef(int modifierDef) {
         this.modifierDef = modifierDef;
     }
 
-    public int getModifierSpe() {
-        return modifierSpe;
-    }
-
     public void setModifierSpe(int modifierSpe) {
         this.modifierSpe = modifierSpe;
-    }
-
-    public int getModifierSpd() {
-        return modifierSpd;
     }
 
     public void setModifierSpd(int modifierSpd) {
