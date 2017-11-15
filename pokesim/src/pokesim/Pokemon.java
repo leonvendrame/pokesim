@@ -170,14 +170,18 @@ public class Pokemon {
         this.ataques = ataques;
     }
 
-    public void infoPokemon() {
+    public void getInfoPokemon() {
         System.out.println(this.getEspecie().getNome());
+        if (this.getEspecie().getTipo1() != null)
+            System.out.println(this.getEspecie().getTipo1().toString());
+        if (this.getEspecie().getTipo2() != null)
+            System.out.println(this.getEspecie().getTipo2().toString());
+        System.out.printf("LEVEL: \t\t%d\n", getLevel());
         System.out.printf("MAX HP: \t%.2f\n", this.valorAtributo(Atributo.HPMAX));
         System.out.printf("HP ATUAL: \t%.2f\n", this.valorAtributo(Atributo.HPATUAL));
         System.out.printf("ATK: \t\t%.2f\n", this.valorAtributo(Atributo.ATK));
         System.out.printf("DEF: \t\t%.2f\n", this.valorAtributo(Atributo.DEF));
         System.out.printf("SPE: \t\t%.2f\n", this.valorAtributo(Atributo.SPE));
         System.out.printf("SPD: \t\t%.2f\n\n", this.valorAtributo(Atributo.SPD));
-
     }
 }

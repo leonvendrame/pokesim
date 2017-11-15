@@ -27,10 +27,10 @@ ID	Especie	Tipo 1	Tipo 2	Base HP	Base ATK	Base DEF	Base SPE	Base SPD
 26	Raichu	Electric		60	90	55	90	100
 27	Sandshrew	Ground		50	75	85	20	40
 28	Sandslash	Ground		75	100	110	45	65
-29	Nidoran?	Poison		55	47	52	40	41
+29	Nidoran♀	Poison		55	47	52	40	41
 30	Nidorina	Poison		70	62	67	55	56
 31	Nidoqueen	Poison	Ground	90	82	87	75	76
-32	Nidoran?	Poison		46	57	40	40	50
+32	Nidoran♂	Poison		46	57	40	40	50
 33	Nidorino	Poison		61	72	57	55	65
 34	Nidoking	Poison	Ground	81	92	77	85	85
 35	Clefairy	Normal		70	45	48	60	35

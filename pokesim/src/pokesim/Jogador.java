@@ -1,11 +1,19 @@
 package pokesim;
 
+import jdk.nashorn.internal.scripts.JO;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public abstract class Jogador {
     private List<Pokemon> time;
     private boolean ultimo;
+
+    Jogador() {
+        this.time = new ArrayList<>();
+        this.ultimo = true;
+    }
 
     public abstract void escolherComando();
 
@@ -34,6 +42,23 @@ public abstract class Jogador {
         }
 
         return;
+    }
+
+    public List<Pokemon> getTime() {
+        return time;
+    }
+
+    public void adicionaPokemonTime(Pokemon pokemon) {
+        if (this.time.size() < 6) {
+            this.time.add(pokemon);
+            if (this.time.size() > 1) {
+                this.ultimo = false;
+            }
+        }
+    }
+
+    public boolean isUltimo() {
+        return ultimo;
     }
 
     public void usarAtaque() {

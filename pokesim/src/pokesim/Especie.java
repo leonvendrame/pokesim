@@ -15,7 +15,7 @@ public class Especie {
 
     Especie(int id) {
         int idReal = id - 1;
-        String[][] pokemon = Batalha.getTabelaPokemon();
+        String[][] pokemon = Batalha.getTabelaEspecie();
         setId(id);
         setNome(pokemon[idReal][1]);
         setBaseHp(Double.parseDouble(pokemon[idReal][4]));
@@ -23,17 +23,17 @@ public class Especie {
         setBaseDef(Double.parseDouble(pokemon[idReal][6]));
         setBaseSpe(Double.parseDouble(pokemon[idReal][7]));
         setBaseSpd(Double.parseDouble(pokemon[idReal][8]));
-        if (!pokemon[idReal][2].isEmpty()) {
+        if (!(pokemon[idReal][2].isEmpty())) {
             for (Tipo tipo : Tipo.values())
-                if (pokemon[idReal][2].compareTo(tipo.toString()) == 0) {
+                if (pokemon[idReal][2].compareToIgnoreCase(tipo.toString()) == 0) {
                     setTipo1(tipo);
                 }
         } else {
             setTipo1(null);
         }
-        if (!pokemon[idReal][3].isEmpty()) {
+        if (!(pokemon[idReal][3].isEmpty())) {
             for (Tipo tipo : Tipo.values())
-                if (pokemon[idReal][3].compareTo(tipo.toString()) == 0) {
+                if (pokemon[idReal][3].compareToIgnoreCase(tipo.toString()) == 0) {
                     setTipo2(tipo);
                 }
         } else {
@@ -85,6 +85,13 @@ public class Especie {
         return nome;
     }
 
+    public Tipo getTipo1() {
+        return tipo1;
+    }
+
+    public Tipo getTipo2() {
+        return tipo2;
+    }
 
     public double calcularAtributo(Atributo atrib, int level) {
         switch (atrib) {
