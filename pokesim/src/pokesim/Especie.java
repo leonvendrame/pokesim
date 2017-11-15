@@ -89,22 +89,22 @@ public class Especie {
     public double calcularAtributo(Atributo atrib, int level) {
         switch (atrib) {
             case HPMAX:
-                return ((2 * baseHp * level) / (110 + level));
+                return (2 * baseHp * level / 100 + level + 10);
 
             case HPATUAL:
-                return ((2 * baseHp * level) / (110 + level));
+                return (2 * baseHp * level / 100 + level + 10);
 
             case ATK:
-                return ((2 * baseAtk * level) / (105));
+                return (2 * baseAtk * level / 100 + 5);
 
             case DEF:
-                return ((2 * baseDef * level) / (105));
+                return (2 * baseDef * level / 100 + 5);
 
             case SPD:
-                return ((2 * baseSpd * level) / (105));
+                return (2 * baseSpd * level / 100 + 5);
 
             case SPE:
-                return ((2 * baseSpe * level) / (105));
+                return (2 * baseSpe * level / 100 + 5);
 
             default:
                 return 0;

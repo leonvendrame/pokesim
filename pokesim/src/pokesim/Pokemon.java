@@ -169,4 +169,15 @@ public class Pokemon {
     public void setAtaques(List<Ataque> ataques) {
         this.ataques = ataques;
     }
+
+    public void infoPokemon() {
+        System.out.println(this.getEspecie().getNome());
+        System.out.printf("MAX HP: \t%.2f\n", this.valorAtributo(Atributo.HPMAX));
+        System.out.printf("HP ATUAL: \t%.2f\n", this.valorAtributo(Atributo.HPATUAL));
+        System.out.printf("ATK: \t\t%.2f\n", this.valorAtributo(Atributo.ATK));
+        System.out.printf("DEF: \t\t%.2f\n", this.valorAtributo(Atributo.DEF));
+        System.out.printf("SPE: \t\t%.2f\n", this.valorAtributo(Atributo.SPE));
+        System.out.printf("SPD: \t\t%.2f\n\n", this.valorAtributo(Atributo.SPD));
+
+    }
 }
