@@ -5,15 +5,22 @@ import java.util.Scanner;
 
 public abstract class Jogador {
     private List<Pokemon> time;
+    private boolean ultimo;
 
     public abstract void escolherComando();
 
     public void trocarPokemon() {
-        for (Pokemon pokemon : this.time)
+        if (this.ultimo) {
+            System.out.println("Você não possui mais Pokemons para trocar.");
+            return;
+        }
+
+        for (Pokemon pokemon : this.time) {
             if (pokemon.getStatus() != Status.FAINTED) {
                 System.out.printf("%s - %s (HP: %s | %s)", this.time.indexOf(pokemon), pokemon.getEspecie().toString(),
-                        pokemon.getHpAtual(), pokemon.getHpMax());
+                        pokemon.valorAtributo(Atributo.HPATUAL), pokemon.valorAtributo(Atributo.HPMAX));
             }
+        }
 
         Scanner scanner = new Scanner(System.in);
         int opcao = scanner.nextInt();

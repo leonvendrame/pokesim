@@ -1,6 +1,9 @@
 package pokesim;
 
+import java.io.File;
+import java.io.FileReader;
 import java.util.List;
+import java.util.Scanner;
 
 public class Pokemon {
     private int     level;
@@ -24,6 +27,7 @@ public class Pokemon {
 
     Pokemon(int id, int level) {
         setLevel(level);
+        this.especie = new Especie(id);
         setHpMax(this.especie.calcularAtributo(Atributo.HPMAX, level));
         setHpAtual(this.especie.calcularAtributo(Atributo.HPATUAL, level));
         setAtk(this.especie.calcularAtributo(Atributo.ATK, level));
