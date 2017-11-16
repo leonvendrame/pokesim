@@ -22,5 +22,13 @@ public class Main {
 
         pokeBatalha.inicializarJogadores(argsInt);
 
+//        for (Pokemon pokemon : pokeBatalha.getJogador0().getTime()){
+//            pokemon.getInfoPokemon();
+//        }
+//
+//        for (Pokemon pokemon : pokeBatalha.getJogador1().getTime()){
+//            pokemon.getInfoPokemon();
+//        }
+
     }
 }

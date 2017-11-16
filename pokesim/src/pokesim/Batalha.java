@@ -30,7 +30,7 @@ public class Batalha {
         buffer.nextLine();
 
         try {
-            bufferCount = new Scanner(arqTabEspecie).useDelimiter("\t");
+            bufferCount = new Scanner(arqTabEspecie);
         } catch (FileNotFoundException e) {
             e.printStackTrace();;
         }
@@ -65,7 +65,7 @@ public class Batalha {
         buffer.nextLine();
 
         try {
-            bufferCount = new Scanner(arqTabAtaques).useDelimiter("\t");
+            bufferCount = new Scanner(arqTabAtaques);
         } catch (FileNotFoundException e) {
             e.printStackTrace();;
         }
@@ -169,7 +169,7 @@ public class Batalha {
         return valido;
     }
 
-    public boolean verificaTamanhoArt(int[] args) {
+    public boolean verificaTamanhoArg(int[] args) {
         if (args.length < 8) {
             return false;
         }
@@ -182,12 +182,14 @@ public class Batalha {
     public void inicializarJogadores(int[] args) {
         int nJogadores = 0;
 
-        if (verificaTamanhoArt(args) && validaCamposArg(args)) {
-            nJogadores = checarArgumentos(args);
-        } else {
-            System.out.printf("\nSeus argumentos são inválidos\n");
-            System.out.printf("O numero de pokemons deve corresponder às suas inicializações.\n");
-            System.out.printf("O níveis e IDs de pokemons e ataques não podem ser iguais a 0.\n");
+        if (verificaTamanhoArg(args)){
+            if (validaCamposArg(args)) {
+                nJogadores = checarArgumentos(args);
+            } else {
+                System.out.printf("\nSeus argumentos são inválidos\n");
+                System.out.printf("O numero de pokemons deve corresponder às suas inicializações.\n");
+                System.out.printf("O níveis e IDs de pokemons e ataques não podem ser iguais a 0.\n");
+            }
         }
 
         if (nJogadores == 2) {
@@ -209,10 +211,7 @@ public class Batalha {
                 j += 6;
             }
 
-            System.out.printf("\n\t\tTime - Jogador 21 - %s\n", jogador0.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
-            for (Pokemon pokemon : getJogador0().getTime()) {
-                System.out.printf("%-14s asd\n LVL %4s\n", pokemon.getEspecie().getNome(), pokemon.getLevel());
-            }
+            this.getResumoJogador(jogador0);
 
             // JOGADOR 2
 
@@ -230,10 +229,7 @@ public class Batalha {
                 j += 6;
             }
 
-            System.out.printf("\n\t\tTime - Jogador 2 - %s\n", jogador1.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
-            for (Pokemon pokemon : getJogador1().getTime()) {
-                System.out.printf("%-14s LVL %4s\n", pokemon.getEspecie().getNome(), pokemon.getLevel());
-            }
+            this.getResumoJogador(jogador1);
 
             return;
         }
@@ -248,23 +244,71 @@ public class Batalha {
             int j = 2;
             for (int i = 0; i < args[1]; i++) {
                 Pokemon addPokemon = new Pokemon(args[j], args[j+1]);
-                this.jogador0.getTime().add(addPokemon);
+                this.jogador0.adicionaPokemonTime(addPokemon);
                 j += 6;
             }
 
-            System.out.printf("\n\t\tTime - Jogador 1 - %s\n", jogador0.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
-            for (Pokemon pokemon : getJogador0().getTime()) {
-                System.out.printf("%-15s LVL %s \n", pokemon.getEspecie().getNome(), pokemon.getLevel());
-            }
+            this.getResumoJogador(jogador0);
 
             return;
         }
 
         if (nJogadores == 0) {
-            System.out.printf("Inicializando Jogadores Manualmente\n");
-            return;
-        }
+            System.out.printf("Inicializando Jogadores Manualmente\n\n");
 
+            Scanner opcao = new Scanner(System.in);
+            int entrada, auxId, auxLvl;
+
+            Jogador jogadorIt;
+
+            for (int i = 0; i < 2; i++) {
+                System.out.printf("\t\t\t Jogador %d\n", i + 1);
+                System.out.printf("%25s\n", "Jogador do Tipo");
+                System.out.printf("0 - Máquina\n1 - Humano\nEntre com sua opção: ");
+                if (opcao.nextInt() == 0) {
+                    jogadorIt = new Maquina();
+                    System.out.printf("Jogador %d: %s\n", i + 1, jogadorIt.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina");
+                } else {
+                    jogadorIt = new Humano();
+                    System.out.printf("Jogador %d: %s\n", i + 1, jogadorIt.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina");
+                }
+                System.out.printf("Quantos pokemons você terá em seu time: ");
+                entrada = opcao.nextInt();
+                while (entrada > 6 || entrada < 1) {
+                    System.out.println("Você não pode ter mais que 6 pokemons e deve ter pelo menos 1 pokemon");
+                    System.out.printf("Insira novamente a quantidade de pokemons em seu time: ");
+                    entrada = opcao.nextInt();
+                }
+                System.out.println("Se você deseja ver a lista com todos os pokemons e status dísponíveis?");
+                System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
+                if (opcao.nextInt() == 1) {
+                    System.out.println("teste");
+                    System.out.printf("%15s%15s%15s%15s%15s%15s%15s%15s%15s\n", "ID", "Espécie", "Tipo 1", "Tipo2", "BaseHP", "BaseATK", "BaseDEF", "BaseSPE", "BaseSPD");
+                    for (int x = 0; x < tabelaEspecie.length; x++){
+                        for (int y = 0; y < 9; y++){
+                            System.out.printf("%15s", Batalha.tabelaEspecie[x][y]);
+                        }
+                        System.out.printf("\n");
+                    }
+                }
+                System.out.println("Entre com o ID e o level de cada pokemon separando por espaço. (Ex: 1 10 = ID 1 Level 10)");
+                for (int j = 0; j < entrada; j++) {
+                    System.out.printf("Pokemon %d: ", j + 1);
+                    auxId = opcao.nextInt();
+                    auxLvl = opcao.nextInt();
+                    Pokemon addPokemon = new Pokemon(auxId, auxLvl);
+                    jogadorIt.adicionaPokemonTime(addPokemon);
+                }
+                if (i == 0){
+                    this.jogador0 = jogadorIt;
+                } else {
+                    this.jogador1 = jogadorIt;
+                }
+                System.out.printf("\n");
+            }
+            this.getResumoJogador(jogador0);
+            this.getResumoJogador(jogador1);
+        }
         return;
     }
 
@@ -274,6 +318,14 @@ public class Batalha {
 
     public Jogador getJogador1() {
         return jogador1;
+    }
+
+    public void getResumoJogador(Jogador jogador) {
+        System.out.printf("\t\tTime - Jogador %d - %s\n", this.jogador0 == jogador ? 1 : 2 , jogador.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
+        for (Pokemon pokemon : jogador.getTime()) {
+            System.out.printf("%-14s LVL %4s\n", pokemon.getEspecie().getNome(), pokemon.getLevel());
+        }
+        System.out.printf("\n");
     }
 
     public void executarTurno() {
