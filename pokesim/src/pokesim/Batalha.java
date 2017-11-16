@@ -202,15 +202,16 @@ public class Batalha {
             }
 
             int j = 2;
+
             for (int i = 0; i < args[1]; i++) {
-                Pokemon addPokemon = new Pokemon(args[j], args[j+1]);
-                this.jogador0.getTime().add(addPokemon);
+                Pokemon addPokemon = new Pokemon(args[j], args[j + 1]);
+                this.jogador0.adicionaPokemonTime(addPokemon);
                 j += 6;
             }
 
-            System.out.printf("\n\t\tTime - Jogador 1 - %s\n", jogador0.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
+            System.out.printf("\n\t\tTime - Jogador 21 - %s\n", jogador0.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
             for (Pokemon pokemon : getJogador0().getTime()) {
-                System.out.printf("%-14s LVL %4s\n", pokemon.getEspecie().getNome(), pokemon.getLevel());
+                System.out.printf("%-14s asd\n LVL %4s\n", pokemon.getEspecie().getNome(), pokemon.getLevel());
             }
 
             // JOGADOR 2
@@ -222,9 +223,10 @@ public class Batalha {
             }
 
             j = argsSegundoJogador + 2;
+
             for (int i = 0; i < args[argsSegundoJogador + 1]; i++) {
-                Pokemon addPokemon = new Pokemon(args[j], args[j+1]);
-                this.jogador1.getTime().add(addPokemon);
+                Pokemon addPokemon = new Pokemon(args[j], args[j + 1]);
+                this.jogador1.adicionaPokemonTime(addPokemon);
                 j += 6;
             }
 

@@ -49,9 +49,9 @@ public abstract class Jogador {
     }
 
     public void adicionaPokemonTime(Pokemon pokemon) {
-        if (this.time.size() < 6) {
-            this.time.add(pokemon);
-            if (this.time.size() > 1) {
+        if (this.getTime().size() < 6) {
+            this.getTime().add(pokemon);
+            if (this.getTime().size() > 1) {
                 this.ultimo = false;
             }
         }
