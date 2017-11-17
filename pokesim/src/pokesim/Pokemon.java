@@ -2,6 +2,7 @@ package pokesim;
 
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -43,10 +44,11 @@ public class Pokemon {
         setConfusion(false);
         setFlinch(false);
         setStatus(Status.OK);
+        this.ataques = new ArrayList<>();
     }
 
-    public double valorAtributo(Atributo atrib) {
-        switch (atrib) {
+    public double valorAtributo(Atributo atributo) {
+        switch (atributo) {
             case ATK:
                 return ((this.atk) * (Math.max(2, 2 + modifierAtk) / Math.max(2, 2 - modifierAtk)));
 
@@ -84,10 +86,6 @@ public class Pokemon {
 
     public void setHpAtual(double hpAtual) {
         this.hpAtual = hpAtual;
-    }
-
-    public double getHpMax() {
-        return hpMax;
     }
 
     public void setHpMax(double hpMax) {
@@ -158,16 +156,45 @@ public class Pokemon {
         return especie;
     }
 
-    public void setEspecie(Especie especie) {
-        this.especie = especie;
-    }
-
     public List<Ataque> getAtaques() {
-        return ataques;
+        return this.ataques;
     }
 
-    public void setAtaques(List<Ataque> ataques) {
-        this.ataques = ataques;
+    public void novoAtaque(int id) {
+        if (id > 0) {
+            int idReal = id - 1;
+            String[] parametros = null;
+            String[][] tabAtaques = Batalha.getTabelaAtaque();
+            String opcao = tabAtaques[idReal][6];
+            Ataque novo = null;
+
+            if (opcao.compareToIgnoreCase("hp") == 0) {
+                parametros = tabAtaques[idReal][7].split(", |\\r");
+                novo = new AtaqueHP(id);
+            } else if (opcao.compareToIgnoreCase("comum") == 0) {
+                novo = new Ataque(id);
+            } else if (opcao.compareToIgnoreCase("multihit") == 0) {
+                novo = new AtaqueMultihit(id);
+            } else if (opcao.compareToIgnoreCase("modifier") == 0) {
+                novo = new AtaqueModifier(id);
+            } else if (opcao.compareToIgnoreCase("status") == 0) {
+                novo = new AtaqueStatus(id);
+            } else if (opcao.compareToIgnoreCase("fixo") == 0) {
+                novo = new AtaqueFixo(id);
+            } else if (opcao.compareToIgnoreCase("charge") == 0) {
+                novo = new AtaqueCharge(id);
+            }
+            if (novo != null) {
+                adicionarAtaque(novo);
+            }
+        }
+        return;
+    }
+
+    private void adicionarAtaque(Ataque ataque) {
+        if (this.getAtaques().size() < 4) {
+            this.getAtaques().add(ataque);
+        }
     }
 
     public void getInfoPokemon() {

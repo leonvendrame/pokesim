@@ -15,8 +15,8 @@
       <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pokesim/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+            <state relative-caret-position="459">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -24,53 +24,46 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Ataque.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Ataque.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pokesim/Ataque.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="476">
-              <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+            <state relative-caret-position="164">
+              <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding>
-                <element signature="e#1194#1195#0" expanded="true" />
-                <element signature="e#1222#1223#0" expanded="true" />
-                <element signature="e#1262#1263#0" expanded="true" />
-                <element signature="e#1294#1295#0" expanded="true" />
-                <element signature="e#1336#1337#0" expanded="true" />
-                <element signature="e#1370#1371#0" expanded="true" />
-                <element signature="e#1416#1417#0" expanded="true" />
-                <element signature="e#1454#1455#0" expanded="true" />
-                <element signature="e#1496#1497#0" expanded="true" />
-                <element signature="e#1530#1531#0" expanded="true" />
-                <element signature="e#1578#1579#0" expanded="true" />
-                <element signature="e#1618#1619#0" expanded="true" />
-                <element signature="e#1656#1657#0" expanded="true" />
-                <element signature="e#1688#1689#0" expanded="true" />
-                <marker date="1510926702602" expanded="false" signature="938:949" ph=" { " />
-                <marker date="1510926702602" expanded="false" signature="956:962" ph=" }" />
-                <marker date="1510926702602" expanded="false" signature="999:1010" ph=" { " />
-                <marker date="1510926702602" expanded="false" signature="1023:1029" ph=" }" />
-                <marker date="1510926702602" expanded="false" signature="1065:1076" ph=" { " />
-                <marker date="1510926702602" expanded="false" signature="1089:1095" ph=" }" />
-                <marker date="1510926702602" expanded="false" signature="1136:1147" ph=" { " />
-                <marker date="1510926702602" expanded="false" signature="1156:1162" ph=" }" />
+                <marker date="1510936894756" expanded="false" signature="1052:1063" ph=" { " />
+                <marker date="1510936894756" expanded="false" signature="1070:1076" ph=" }" />
+                <marker date="1510936894756" expanded="false" signature="1113:1124" ph=" { " />
+                <marker date="1510936894756" expanded="false" signature="1137:1143" ph=" }" />
+                <marker date="1510936894756" expanded="false" signature="1179:1190" ph=" { " />
+                <marker date="1510936894756" expanded="false" signature="1203:1209" ph=" }" />
+                <marker date="1510936894756" expanded="false" signature="1250:1261" ph=" { " />
+                <marker date="1510936894756" expanded="false" signature="1270:1276" ph=" }" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AtaqueHP.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pokesim/AtaqueHP.java">
+      <file leaf-file-name="Batalha.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/pokesim/Batalha.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="16" column="5" lean-forward="true" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+            <state relative-caret-position="400">
+              <caret line="467" column="9" lean-forward="false" selection-start-line="467" selection-start-column="9" selection-end-line="467" selection-end-column="9" />
               <folding>
-                <element signature="e#129#130#0" expanded="true" />
-                <element signature="e#154#155#0" expanded="true" />
-                <element signature="e#183#184#0" expanded="true" />
-                <element signature="e#211#212#0" expanded="true" />
-                <element signature="e#246#247#0" expanded="true" />
-                <element signature="e#280#281#0" expanded="true" />
-                <element signature="e#322#323#0" expanded="true" />
-                <element signature="e#352#353#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="method#carregarTabelas#0;class#Batalha#0" expanded="false" />
+                <element signature="method#checarArgumentos#0;class#Batalha#0" expanded="false" />
+                <element signature="method#validaCamposArg#0;class#Batalha#0" expanded="false" />
+                <element signature="method#verificaTamanhoArg#0;class#Batalha#0" expanded="false" />
+                <element signature="method#inicializarJogadores#0;class#Batalha#0" expanded="false" />
+                <element signature="method#continuarJogo#0;class#Batalha#0" expanded="false" />
+                <marker date="1510939413195" expanded="false" signature="18325:18336" ph=" { " />
+                <marker date="1510939413195" expanded="false" signature="18352:18358" ph=" }" />
+                <marker date="1510939413195" expanded="false" signature="18392:18403" ph=" { " />
+                <marker date="1510939413195" expanded="false" signature="18419:18425" ph=" }" />
+                <marker date="1510939413195" expanded="false" signature="19156:19568" ph="{...}" />
+                <marker date="1510939413195" expanded="false" signature="19608:19999" ph="{...}" />
+                <marker date="1510939413195" expanded="false" signature="20529:20540" ph=" { " />
+                <marker date="1510939413195" expanded="false" signature="20547:20553" ph=" }" />
               </folding>
             </state>
           </provider>
@@ -90,9 +83,12 @@
     <findStrings>
       <find>|</find>
       <find>pokemon</find>
+      <find>adicionaPokemonTime</find>
+      <find>modifierAccuracy</find>
     </findStrings>
     <replaceStrings>
       <replace>ataque</replace>
+      <replace>adicionarPokemon</replace>
     </replaceStrings>
   </component>
   <component name="IdeDocumentHistory">
@@ -107,8 +103,6 @@
         <option value="$PROJECT_DIR$/src/pokesim/Table2.txt" />
         <option value="$PROJECT_DIR$/src/pokesim/Humano.java" />
         <option value="$PROJECT_DIR$/src/pokesim/Maquina.java" />
-        <option value="$PROJECT_DIR$/src/pokesim/Pokemon.java" />
-        <option value="$PROJECT_DIR$/src/pokesim/Jogador.java" />
         <option value="$PROJECT_DIR$/src/pokesim/Menu.java" />
         <option value="$PROJECT_DIR$/src/pokesim/Especie.java" />
         <option value="$PROJECT_DIR$/src/pokesim/AtaqueMultihit.java" />
@@ -118,13 +112,16 @@
         <option value="$PROJECT_DIR$/src/pokesim/AtaqueStatus.java" />
         <option value="$PROJECT_DIR$/src/pokesim/AtaqueHP.java" />
         <option value="$PROJECT_DIR$/src/pokesim/ClassesAtaque.java" />
-        <option value="$PROJECT_DIR$/src/pokesim/Ataque.java" />
+        <option value="$PROJECT_DIR$/src/pokesim/tabelaDeEspecies.txt" />
         <option value="$PROJECT_DIR$/src/pokesim/Main.java" />
+        <option value="$PROJECT_DIR$/src/pokesim/Jogador.java" />
+        <option value="$PROJECT_DIR$/src/pokesim/Pokemon.java" />
+        <option value="$PROJECT_DIR$/src/pokesim/Ataque.java" />
         <option value="$PROJECT_DIR$/src/pokesim/Batalha.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="55" />
     <option name="y" value="16" />
     <option name="width" value="1302" />
@@ -213,7 +210,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="pokesim.Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="0 1 11 8 80 0 0 0 0 1 11 8 80 0 0 0 " />
+      <option name="PROGRAM_PARAMETERS" value="1 1 6 40 23 25 0 0 0 2 7 20 157 0 0 0 2 30 33 0 1 2" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -259,14 +256,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32934782" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5021075" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32826087" sideWeight="0.49789253" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32826087" sideWeight="0.49789253" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -316,7 +313,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="16" />
+      <option name="time" value="30" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -418,8 +415,8 @@
         <state relative-caret-position="60">
           <caret line="4" column="4" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="4" />
           <folding>
-            <element signature="e#72#73#0" expanded="true" />
-            <element signature="e#95#96#0" expanded="true" />
+            <element signature="e#72#73#0" expanded="false" />
+            <element signature="e#95#96#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -430,14 +427,20 @@
           <caret line="17" column="22" lean-forward="false" selection-start-line="17" selection-start-column="22" selection-end-line="17" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#carregarTabelas#0;class#Batalha#0" expanded="false" />
             <element signature="method#checarArgumentos#0;class#Batalha#0" expanded="false" />
             <element signature="method#validaCamposArg#0;class#Batalha#0" expanded="false" />
             <element signature="method#verificaTamanhoArg#0;class#Batalha#0" expanded="false" />
             <element signature="method#inicializarJogadores#0;class#Batalha#0" expanded="false" />
-            <element signature="method#getResumoJogador#0;class#Batalha#0" expanded="false" />
-            <element signature="method#printarTabelaEspecie#0;class#Batalha#0" expanded="false" />
-            <element signature="method#printarTabelaAtaque#0;class#Batalha#0" expanded="false" />
-            <element signature="method#continuar#0;class#Batalha#0" expanded="false" />
+            <element signature="method#continuarJogo#0;class#Batalha#0" expanded="false" />
+            <marker date="1510939413195" expanded="false" signature="18325:18336" ph=" { " />
+            <marker date="1510939413195" expanded="false" signature="18352:18358" ph=" }" />
+            <marker date="1510939413195" expanded="false" signature="18392:18403" ph=" { " />
+            <marker date="1510939413195" expanded="false" signature="18419:18425" ph=" }" />
+            <marker date="1510939413195" expanded="false" signature="19156:19568" ph="{...}" />
+            <marker date="1510939413195" expanded="false" signature="19608:19999" ph="{...}" />
+            <marker date="1510939413195" expanded="false" signature="20529:20540" ph=" { " />
+            <marker date="1510939413195" expanded="false" signature="20547:20553" ph=" }" />
           </folding>
         </state>
       </provider>
@@ -551,35 +554,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/tabelaDeAtaques.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/tabelaDeEspecies.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="32" lean-forward="false" selection-start-line="31" selection-start-column="32" selection-end-line="31" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pokesim/Menu.java" />
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/Scanner.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="175">
           <caret line="2116" column="0" lean-forward="false" selection-start-line="2116" selection-start-column="0" selection-end-line="2116" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Pokemon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="45" column="0" lean-forward="false" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -601,23 +581,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Jogador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="219">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pokesim/Maquina.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="14" lean-forward="false" selection-start-line="5" selection-start-column="14" selection-end-line="5" selection-end-column="14" />
           <folding>
-            <element signature="e#72#73#0" expanded="true" />
-            <element signature="e#95#96#0" expanded="true" />
+            <element signature="e#72#73#0" expanded="false" />
+            <element signature="e#95#96#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -655,19 +625,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/AtaqueStatus.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="23" lean-forward="false" selection-start-line="4" selection-start-column="23" selection-end-line="4" selection-end-column="23" />
-          <folding>
-            <element signature="e#135#136#0" expanded="true" />
-            <element signature="e#160#161#0" expanded="true" />
-            <element signature="e#202#203#0" expanded="true" />
-            <element signature="e#232#233#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pokesim/AtaqueCharge.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
@@ -675,16 +632,6 @@
           <folding>
             <element signature="e#87#88#0" expanded="true" />
             <element signature="e#112#113#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Especie.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
-          <folding>
-            <element signature="method#calcularAtributo#0;class#Especie#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -714,61 +661,111 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Batalha.java">
+    <entry file="file://$PROJECT_DIR$/src/pokesim/AtaqueStatus.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1198">
-          <caret line="25" column="34" lean-forward="false" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
+        <state relative-caret-position="170">
+          <caret line="14" column="1" lean-forward="true" selection-start-line="14" selection-start-column="1" selection-end-line="14" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Especie.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="22" lean-forward="true" selection-start-line="18" selection-start-column="22" selection-end-line="18" selection-end-column="22" />
           <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="method#checarArgumentos#0;class#Batalha#0" expanded="false" />
-            <element signature="method#validaCamposArg#0;class#Batalha#0" expanded="false" />
-            <element signature="method#verificaTamanhoArg#0;class#Batalha#0" expanded="false" />
-            <element signature="method#inicializarJogadores#0;class#Batalha#0" expanded="false" />
-            <element signature="method#getResumoJogador#0;class#Batalha#0" expanded="false" />
-            <element signature="method#printarTabelaEspecie#0;class#Batalha#0" expanded="false" />
-            <element signature="method#printarTabelaAtaque#0;class#Batalha#0" expanded="false" />
-            <element signature="method#continuar#0;class#Batalha#0" expanded="false" />
+            <element signature="method#calcularAtributo#0;class#Especie#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/pokesim/tabelaDeEspecies.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        <state relative-caret-position="1290">
+          <caret line="151" column="39" lean-forward="false" selection-start-line="151" selection-start-column="39" selection-end-line="151" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/tabelaDeAtaques.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="46" lean-forward="true" selection-start-line="13" selection-start-column="46" selection-end-line="13" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Jogador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="51" column="5" lean-forward="true" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
           <folding>
-            <element signature="imports" expanded="true" />
+            <element signature="method#trocarPokemon#0;class#Jogador#0" expanded="false" />
+            <element signature="method#adicionarPokemon#0;class#Jogador#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Pokemon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1229">
+          <caret line="162" column="35" lean-forward="false" selection-start-line="162" selection-start-column="35" selection-end-line="162" selection-end-column="35" />
+          <folding>
+            <element signature="method#valorAtributo#0;class#Pokemon#0" expanded="false" />
+            <element signature="method#novoAtaque#0;class#Pokemon#0" expanded="false" />
+            <element signature="method#adicionarAtaque#0;class#Pokemon#0" expanded="false" />
+            <element signature="method#getInfoPokemon#0;class#Pokemon#0" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pokesim/Ataque.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="5" lean-forward="false" selection-start-line="28" selection-start-column="5" selection-end-line="28" selection-end-column="5" />
+        <state relative-caret-position="164">
+          <caret line="10" column="0" lean-forward="true" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding>
-            <element signature="e#1194#1195#0" expanded="true" />
-            <element signature="e#1222#1223#0" expanded="true" />
-            <element signature="e#1262#1263#0" expanded="true" />
-            <element signature="e#1294#1295#0" expanded="true" />
-            <element signature="e#1336#1337#0" expanded="true" />
-            <element signature="e#1370#1371#0" expanded="true" />
-            <element signature="e#1416#1417#0" expanded="true" />
-            <element signature="e#1454#1455#0" expanded="true" />
-            <element signature="e#1496#1497#0" expanded="true" />
-            <element signature="e#1530#1531#0" expanded="true" />
-            <element signature="e#1578#1579#0" expanded="true" />
-            <element signature="e#1618#1619#0" expanded="true" />
-            <element signature="e#1656#1657#0" expanded="true" />
-            <element signature="e#1688#1689#0" expanded="true" />
-            <marker date="1510926702602" expanded="false" signature="938:949" ph=" { " />
-            <marker date="1510926702602" expanded="false" signature="956:962" ph=" }" />
-            <marker date="1510926702602" expanded="false" signature="999:1010" ph=" { " />
-            <marker date="1510926702602" expanded="false" signature="1023:1029" ph=" }" />
-            <marker date="1510926702602" expanded="false" signature="1065:1076" ph=" { " />
-            <marker date="1510926702602" expanded="false" signature="1089:1095" ph=" }" />
-            <marker date="1510926702602" expanded="false" signature="1136:1147" ph=" { " />
-            <marker date="1510926702602" expanded="false" signature="1156:1162" ph=" }" />
+            <marker date="1510936894756" expanded="false" signature="1052:1063" ph=" { " />
+            <marker date="1510936894756" expanded="false" signature="1070:1076" ph=" }" />
+            <marker date="1510936894756" expanded="false" signature="1113:1124" ph=" { " />
+            <marker date="1510936894756" expanded="false" signature="1137:1143" ph=" }" />
+            <marker date="1510936894756" expanded="false" signature="1179:1190" ph=" { " />
+            <marker date="1510936894756" expanded="false" signature="1203:1209" ph=" }" />
+            <marker date="1510936894756" expanded="false" signature="1250:1261" ph=" { " />
+            <marker date="1510936894756" expanded="false" signature="1270:1276" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Batalha.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="467" column="9" lean-forward="false" selection-start-line="467" selection-start-column="9" selection-end-line="467" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#carregarTabelas#0;class#Batalha#0" expanded="false" />
+            <element signature="method#checarArgumentos#0;class#Batalha#0" expanded="false" />
+            <element signature="method#validaCamposArg#0;class#Batalha#0" expanded="false" />
+            <element signature="method#verificaTamanhoArg#0;class#Batalha#0" expanded="false" />
+            <element signature="method#inicializarJogadores#0;class#Batalha#0" expanded="false" />
+            <element signature="method#continuarJogo#0;class#Batalha#0" expanded="false" />
+            <marker date="1510939413195" expanded="false" signature="18325:18336" ph=" { " />
+            <marker date="1510939413195" expanded="false" signature="18352:18358" ph=" }" />
+            <marker date="1510939413195" expanded="false" signature="18392:18403" ph=" { " />
+            <marker date="1510939413195" expanded="false" signature="18419:18425" ph=" }" />
+            <marker date="1510939413195" expanded="false" signature="19156:19568" ph="{...}" />
+            <marker date="1510939413195" expanded="false" signature="19608:19999" ph="{...}" />
+            <marker date="1510939413195" expanded="false" signature="20529:20540" ph=" { " />
+            <marker date="1510939413195" expanded="false" signature="20547:20553" ph=" }" />
           </folding>
         </state>
       </provider>

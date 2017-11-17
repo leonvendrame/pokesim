@@ -20,10 +20,9 @@ public class Main {
 
         pokeBatalha.inicializarJogadores(argsInt);
 
-
-//        while (pokeBatalha.continuar()) {
+//        pokeBatalha.printarTabelaEspecie();
 //
-//        }
+//        pokeBatalha.printarTabelaAtaque();
 
 
     }

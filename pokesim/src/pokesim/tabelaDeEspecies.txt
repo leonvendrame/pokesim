@@ -1,4 +1,4 @@
-ID	Especie	Tipo 1	Tipo 2	Base HP	Base ATK	Base DEF	Base SPE	Base SPD
+﻿ID	Especie	Tipo 1	Tipo 2	Base HP	Base ATK	Base DEF	Base SPE	Base SPD
 1	Bulbasaur	Grass	Poison	45	49	49	65	45
 2	Ivysaur	Grass	Poison	60	62	63	80	60
 3	Venusaur	Grass	Poison	80	82	83	100	80
@@ -150,3 +150,4 @@ ID	Especie	Tipo 1	Tipo 2	Base HP	Base ATK	Base DEF	Base SPE	Base SPD
 149	Dragonite	Dragon	Flying	91	134	95	100	80
 150	Mewtwo	Psychic		106	110	90	154	130
 151	Mew	Psychic		100	100	100	100	100
+152	NewE	Electric		30	50	60	70	40

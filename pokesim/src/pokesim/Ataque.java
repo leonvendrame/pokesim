@@ -28,6 +28,14 @@ public class Ataque {
         }
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public Tipo getTipo() {
+        return tipo;
+    }
+
     public void efeito() {
         return;
     }
