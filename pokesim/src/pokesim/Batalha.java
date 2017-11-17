@@ -23,7 +23,7 @@ public class Batalha {
         Scanner buffer = null;
 
         try {
-            buffer = new Scanner(arqTabEspecie).useDelimiter("\\t|\\n|    ");
+            buffer = new Scanner(arqTabEspecie).useDelimiter("\\t|\\n|    |\\r");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class Batalha {
 //        }
 
         try {
-            buffer = new Scanner(arqTabAtaques).useDelimiter("\\t|\\n|    ");
+            buffer = new Scanner(arqTabAtaques).useDelimiter("\\t|\\n|    |\\r");
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
@@ -145,24 +145,24 @@ public class Batalha {
         }
 
          while (valido && i < segJogador) {
-            if (args[i] == 0 || args[i + 1] == 0){
+            if (args[i] == 0 || args[i] > tabelaEspecie.length || args[i + 1] == 0){
                 valido = false;
             }
             i += 6;
         }
 
-        if (args.length > segJogador + 1 && args.length < (segJogador + ((args[segJogador + 1] * 6) + 2))) {
+        if (args.length > segJogador + 1 && args.length <= (segJogador + ((args[segJogador + 1] * 6) + 2))) {
             if (args[segJogador + 1] == 0) {
                     valido = false;
             }
 
-            i += 2;
+            segJogador += 2;
 
-            while (valido && i < args.length) {
-                if (args[i] == 0 || args[i + 1] == 0) {
+            while (valido && segJogador < args.length) {
+                if (args[segJogador] == 0 || args[segJogador] > tabelaEspecie.length || args[segJogador + 1] == 0) {
                     valido = false;
                 }
-                i += 6;
+                segJogador += 6;
             }
         }
 
@@ -186,9 +186,10 @@ public class Batalha {
             if (validaCamposArg(args)) {
                 nJogadores = checarArgumentos(args);
             } else {
-                System.out.printf("\nSeus argumentos são inválidos\n");
+                System.out.printf("Seus argumentos são inválidos\n");
                 System.out.printf("O numero de pokemons deve corresponder às suas inicializações.\n");
                 System.out.printf("O níveis e IDs de pokemons e ataques não podem ser iguais a 0.\n");
+                System.out.printf("Os IDs dos pokemons devem estar dísponíveis na tabela.\n");
             }
         }
 
@@ -400,6 +401,32 @@ public class Batalha {
             System.out.printf("\n");
         }
         return;
+    }
+
+    public void printarTabelaAtaque() {
+        System.out.printf("%15s%15s%15s%15s%15s%15s%15s%15s%15s\n", "ID", "Espécie", "Tipo 1", "Tipo2", "BaseHP", "BaseATK", "BaseDEF", "BaseSPE", "BaseSPD");
+        for (int x = 0; x < tabelaAtaque.length; x++){
+            for (int y = 0; y < 8; y++){
+                System.out.printf("%15s", Batalha.tabelaAtaque[x][y]);
+            }
+            System.out.printf("\n");
+        }
+        return;
+    }
+
+    public boolean continuar() {
+        boolean pokemonJog0 = false, pokemonJog1 = false;
+        for (Pokemon pokemon : this.jogador0.getTime()) {
+            if (pokemon.getStatus() != Status.FAINTED) {
+                pokemonJog0 = true;
+            }
+        }
+        for (Pokemon pokemon : this.jogador1.getTime()) {
+            if (pokemon.getStatus() != Status.FAINTED) {
+                pokemonJog1 = true;
+            }
+        }
+        return (pokemonJog0 && pokemonJog1);
     }
 
     public void executarTurno() {

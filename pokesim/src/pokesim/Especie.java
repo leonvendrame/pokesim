@@ -16,7 +16,7 @@ public class Especie {
     Especie(int id) {
         int idReal = id - 1;
         String[][] pokemon = Batalha.getTabelaEspecie();
-        setId(id);
+        setId(idReal);
         setNome(pokemon[idReal][1]);
         setBaseHp(Double.parseDouble(pokemon[idReal][4]));
         setBaseAtk(Double.parseDouble(pokemon[idReal][5]));

@@ -1,10 +1,6 @@
 package pokesim;
 
-import com.sun.deploy.util.SystemUtils;
-import sun.rmi.server.InactiveGroupException;
-
-import java.io.IOException;
-import java.util.List;
+import com.sun.xml.internal.bind.v2.TODO;
 
 import static pokesim.Batalha.carregarTabelas;
 
@@ -24,13 +20,11 @@ public class Main {
 
         pokeBatalha.inicializarJogadores(argsInt);
 
-//        for (Pokemon pokemon : pokeBatalha.getJogador0().getTime()){
-//            pokemon.getInfoPokemon();
-//        }
+
+//        while (pokeBatalha.continuar()) {
 //
-//        for (Pokemon pokemon : pokeBatalha.getJogador1().getTime()){
-//            pokemon.getInfoPokemon();
 //        }
+
 
     }
 }
