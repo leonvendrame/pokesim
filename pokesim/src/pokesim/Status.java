@@ -7,5 +7,7 @@ public enum Status {
     FROZEN,
     PARALISYS,
     POISON,
-    SLEEP
+    SLEEP,
+    CONFUSION,
+    FLINCH
 }

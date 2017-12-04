@@ -2,6 +2,8 @@ package pokesim;
 
 import com.sun.xml.internal.bind.v2.TODO;
 
+import java.util.Random;
+
 import static pokesim.Batalha.carregarTabelas;
 
 public class Main {
@@ -19,11 +21,6 @@ public class Main {
         Batalha pokeBatalha = new Batalha();
 
         pokeBatalha.inicializarJogadores(argsInt);
-
-//        pokeBatalha.printarTabelaEspecie();
-//
-//        pokeBatalha.printarTabelaAtaque();
-
 
     }
 }
