@@ -290,7 +290,7 @@ public class Batalha {
             System.out.printf("Quantos pokemons o time terá: ");
             entrada = opcao.nextInt();
             while (entrada > 6 || entrada < 1) {
-                System.out.println("Você não pode ter mais que 6 pokemons e deve ter pelo menos 1 pokemon.");
+                System.out.println(Main.ANSI_RED + "Você não pode ter mais que 6 pokemons e deve ter pelo menos 1 pokemon." + Main.ANSI_RESET);
                 System.out.printf("Insira novamente a quantidade de pokemons em seu time: ");
                 entrada = opcao.nextInt();
             }
@@ -305,7 +305,8 @@ public class Batalha {
                 auxId = opcao.nextInt();
                 auxLvl = opcao.nextInt();
                 while (auxId > tabelaEspecie.length){
-                    System.out.println("O ID escolhido é inválido, deseja visualizar a tabela de espécies disponíveis?");
+                    System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
+                    System.out.println("Deseja visualizar a tabela de espécies disponíveis?");
                     System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
                     if (opcao.nextInt() == 1){
                         printarTabelaEspecie();
@@ -320,7 +321,7 @@ public class Batalha {
                 System.out.printf("Esocolha a quantidade de ataques deste pokemon: ");
                 int entradaQtde = opcao.nextInt();
                 while (entradaQtde < 0 || entradaQtde > 4) {
-                    System.out.println("Você não pode ter mais que 4 ataques por pokemon.");
+                    System.out.println(Main.ANSI_RED + "Você não pode ter mais que 4 ataques por pokemon." + Main.ANSI_RESET);
                     System.out.printf("Insira novamente a quantidade de ataques deste pokemon: ");
                     entradaQtde = opcao.nextInt();
                 }
@@ -335,7 +336,8 @@ public class Batalha {
                     System.out.printf("Ataque %d: ", n + 1);
                     idAtaque = opcao.nextInt();
                     while (idAtaque > tabelaAtaque.length) {
-                        System.out.println("O ID escolhido é inválido, deseja visualizar a tabela de ataques disponíveis?");
+                        System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
+                        System.out.println("Deseja visualizar a tabela de ataques disponíveis?");
                         System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
                         if (opcao.nextInt() == 1){
                             printarTabelaAtaque();
@@ -380,7 +382,7 @@ public class Batalha {
                 System.out.printf("Quantos pokemons o time terá: ");
                 entrada = opcao.nextInt();
                 while (entrada > 6 || entrada < 1) {
-                    System.out.println("Você não pode ter mais que 6 pokemons e deve ter pelo menos 1 pokemon.");
+                    System.out.println(Main.ANSI_RED + "Você não pode ter mais que 6 pokemons e deve ter pelo menos 1 pokemon." + Main.ANSI_RESET);
                     System.out.printf("Insira novamente a quantidade de pokemons em seu time: ");
                     entrada = opcao.nextInt();
                 }
@@ -396,7 +398,8 @@ public class Batalha {
                     auxId = opcao.nextInt();
                     auxLvl = opcao.nextInt();
                     while (auxId > tabelaEspecie.length){
-                        System.out.println("O ID escolhido é inválido, deseja visualizar a tabela de espécies disponíveis?");
+                        System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
+                        System.out.println("Deseja visualizar a tabela de espécies disponíveis?");
                         System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
                         if (opcao.nextInt() == 1){
                             printarTabelaEspecie();
@@ -411,7 +414,7 @@ public class Batalha {
                     System.out.printf("Esocolha a quantidade de ataques deste pokemon: ");
                     int entradaQtde = opcao.nextInt();
                     while (entradaQtde < 0 || entradaQtde > 4) {
-                        System.out.println("Você não pode ter mais que 4 ataques por pokemon.");
+                        System.out.println(Main.ANSI_RED + "Você não pode ter mais que 4 ataques por pokemon." + Main.ANSI_RESET);
                         System.out.printf("Insira novamente a quantidade de ataques deste pokemon: ");
                         entradaQtde = opcao.nextInt();
                     }
@@ -426,7 +429,8 @@ public class Batalha {
                         System.out.printf("Ataque %d: ", n + 1);
                         idAtaque = opcao.nextInt();
                         while (idAtaque > tabelaAtaque.length) {
-                            System.out.println("O ID escolhido é inválido, deseja visualizar a tabela de ataques disponíveis?");
+                            System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
+                            System.out.println("Deseja visualizar a tabela de ataques disponíveis?");
                             System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
                             if (opcao.nextInt() == 1){
                                 printarTabelaAtaque();
@@ -446,11 +450,11 @@ public class Batalha {
                 }
                 System.out.printf("\n");
             }
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
             this.getResumoJogador(jogador0);
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
             this.getResumoJogador(jogador1);
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
         }
 
         return;
@@ -466,7 +470,7 @@ public class Batalha {
 
     public void getResumoJogador(Jogador jogador) {
         System.out.println("-------------------------------------------");
-        System.out.printf("\t\tTime - Jogador %d - %s\n\n", this.jogador0 == jogador ? 1 : 2 , jogador.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
+        System.out.printf(Main.ANSI_BLUE + "\t\tTime - Jogador %d - %s\n\n" + Main.ANSI_RESET, this.jogador0 == jogador ? 1 : 2 , jogador.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
         for (Pokemon pokemon : jogador.getTime()) {
             System.out.printf("%-14s LVL %4s\n", pokemon.getEspecie().getNome(), pokemon.getLevel());
             List<Ataque> ataquesIt = pokemon.getAtaques();

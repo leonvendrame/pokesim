@@ -17,10 +17,13 @@ public abstract class Jogador {
 
     public void trocarPokemon() {
         System.out.println("Lista de opções dísponíveis:\n");
-        for (Pokemon pokemon : this.time) {
+        for (Pokemon pokemon : getTime()) {
             if (pokemon.getStatus() != Status.FAINTED) {
-                System.out.printf("%s - %s (HP: %s | %s)\n", this.time.indexOf(pokemon), pokemon.getEspecie().getNome().toString(),
+                System.out.printf(Main.ANSI_GREEN + "%s - %s (HP: %s | %s)\n" + Main.ANSI_RESET, getTime().indexOf(pokemon), pokemon.getEspecie().getNome().toString(),
                                         pokemon.valorAtributo(Atributo.HPATUAL), pokemon.valorAtributo(Atributo.HPMAX));
+            } else {
+                System.out.printf(Main.ANSI_RED + "✖ %s - FAINTED (HP: %s | %s) ✖\n" + Main.ANSI_RESET, pokemon.getEspecie().getNome().toString(),
+                        pokemon.valorAtributo(Atributo.HPATUAL), pokemon.valorAtributo(Atributo.HPMAX));
             }
         }
 
@@ -37,10 +40,10 @@ public abstract class Jogador {
             System.out.printf("Escolha sua opção: ");
             opcao = scanner.nextInt();
         }
-        if (this.time.get(opcao).getStatus() != Status.FAINTED) {
-            Pokemon troca = this.time.get(0);
-            this.time.set(0, this.time.get(opcao));
-            this.time.set(opcao, troca);
+        if (getTime().get(opcao).getStatus() != Status.FAINTED) {
+            Pokemon troca = getTime().get(0);
+            getTime().set(0, getTime().get(opcao));
+            getTime().set(opcao, troca);
         }
 
         return;
