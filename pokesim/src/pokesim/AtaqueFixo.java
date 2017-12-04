@@ -3,7 +3,7 @@ package pokesim;
 public class AtaqueFixo extends Ataque {
     private int val;
 
-    AtaqueFixo(int id) {
+    AtaqueFixo(int id, String[] parametros) {
         super(id);
     }
 

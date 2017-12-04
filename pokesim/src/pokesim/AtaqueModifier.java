@@ -5,7 +5,7 @@ public class AtaqueModifier extends Ataque {
     private int n;
     private int chance;
 
-    AtaqueModifier(int id) {
+    AtaqueModifier(int id, String[] parametros) {
         super(id);
     }
 

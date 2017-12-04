@@ -2,7 +2,7 @@ package pokesim;
 
 public class AtaqueCharge extends Ataque {
 
-    AtaqueCharge(int id) {
+    AtaqueCharge(int id, String[] parametros) {
         super(id);
     }
 

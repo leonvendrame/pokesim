@@ -4,7 +4,7 @@ public class AtaqueHP extends Ataque {
     public int valor;
     public int porcentagem;
 
-    AtaqueHP(int id) {
+    AtaqueHP(int id, String[] parametros) {
         super(id);
     }
 

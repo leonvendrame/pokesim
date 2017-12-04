@@ -17,8 +17,16 @@ public class Batalha {
     public static void carregarTabelas() {
         int countLinhasEspecie = 0;
         int countLinhaAtaques = 0;
-        File arqTabEspecie = new File("src\\pokesim\\tabelaDeEspecies.txt");
-        File arqTabAtaques = new File("src\\pokesim\\tabelaDeAtaques.txt");
+        File arqTabEspecie;
+        File arqTabAtaques;
+
+        if (System.getProperty("os.name").compareToIgnoreCase("linux") == 0) {
+            arqTabEspecie = new File("src/pokesim/tabelaDeEspecies.txt");
+            arqTabAtaques = new File("src/pokesim/tabelaDeAtaques.txt");
+        } else {
+            arqTabEspecie = new File("src\\pokesim\\tabelaDeEspecies.txt");
+            arqTabAtaques = new File("src\\pokesim\\tabelaDeAtaques.txt");
+        }
         Scanner bufferCount = null;
         Scanner buffer = null;
 

@@ -167,22 +167,22 @@ public class Pokemon {
             String[][] tabAtaques = Batalha.getTabelaAtaque();
             String opcao = tabAtaques[idReal][6];
             Ataque novo = null;
+            parametros = tabAtaques[idReal][7].split(", |\\r");
 
             if (opcao.compareToIgnoreCase("hp") == 0) {
-                parametros = tabAtaques[idReal][7].split(", |\\r");
-                novo = new AtaqueHP(id);
+                novo = new AtaqueHP(id, parametros);
             } else if (opcao.compareToIgnoreCase("comum") == 0) {
                 novo = new Ataque(id);
             } else if (opcao.compareToIgnoreCase("multihit") == 0) {
-                novo = new AtaqueMultihit(id);
+                novo = new AtaqueMultihit(id, parametros);
             } else if (opcao.compareToIgnoreCase("modifier") == 0) {
-                novo = new AtaqueModifier(id);
+                novo = new AtaqueModifier(id, parametros);
             } else if (opcao.compareToIgnoreCase("status") == 0) {
-                novo = new AtaqueStatus(id);
+                novo = new AtaqueStatus(id, parametros);
             } else if (opcao.compareToIgnoreCase("fixo") == 0) {
-                novo = new AtaqueFixo(id);
+                novo = new AtaqueFixo(id, parametros);
             } else if (opcao.compareToIgnoreCase("charge") == 0) {
-                novo = new AtaqueCharge(id);
+                novo = new AtaqueCharge(id, parametros);
             }
             if (novo != null) {
                 adicionarAtaque(novo);
