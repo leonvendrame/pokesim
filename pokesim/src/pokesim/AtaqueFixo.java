@@ -3,18 +3,18 @@ package pokesim;
 public class AtaqueFixo extends Ataque {
     private int val;
 
-    AtaqueFixo(int id, Pokemon pokemon, String[] parametros) {
-        super(id, pokemon);
+    AtaqueFixo(int id, String[] parametros) {
+        super(id);
         if (parametros[0].compareToIgnoreCase("lvl") == 0) {
-            setVal(this.getPokemon().getLevel());
+            setVal(-1);
         } else {
             setVal(Integer.parseInt(parametros[0]));
         }
     }
 
     @Override
-    public void efeito() {
-        super.efeito();
+    public void efeito(Pokemon atacante, Pokemon defensor) {
+
     }
 
     public int getVal() {

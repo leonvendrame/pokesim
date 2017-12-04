@@ -2,26 +2,25 @@ package pokesim;
 
 public class AtaqueHP extends Ataque {
     private int valor;
-    private double porcentagem;
+    private int porcentagem;
 
-    AtaqueHP(int id, Pokemon pokemon, String[] parametros) {
-        super(id, pokemon);
+    AtaqueHP(int id, String[] parametros) {
+        super(id);
         if (parametros[0].compareToIgnoreCase("max_hp") == 0) {
-            setValor((int) pokemon.valorAtributo(Atributo.HPMAX));
+            setValor(-2);
         } else if (parametros[0].compareToIgnoreCase("dano") == 0) {
             setValor(-1);
         }
-        setPorcentagem(Double.parseDouble(parametros[1]));
+        setPorcentagem((int) (Double.parseDouble(parametros[1]) * 100));
     }
 
     @Override
-    public void efeito() {
-        super.efeito();
+    public void efeito(Pokemon atacante, Pokemon defensor) {
 
         if (getValor() == -1) {
             //seta o dano
         } else {
-            this.getPokemon().setHpAtual(this.getPokemon().valorAtributo(Atributo.HPATUAL) + this.valor);
+//            this.getPokemon().setHpAtual(this.getPokemon().valorAtributo(Atributo.HPATUAL) + this.valor);
         }
     }
 
@@ -37,7 +36,7 @@ public class AtaqueHP extends Ataque {
         this.valor = valor;
     }
 
-    public void setPorcentagem(double porcentagem) {
+    public void setPorcentagem(int porcentagem) {
         this.porcentagem = porcentagem;
     }
 }

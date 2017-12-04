@@ -4,8 +4,8 @@ public class AtaqueStatus extends Ataque {
     private Status status;
     private int chance;
 
-    AtaqueStatus(int id, Pokemon pokemon, String[] parametros) {
-        super(id, pokemon);
+    AtaqueStatus(int id, String[] parametros) {
+        super(id);
         if (!parametros[0].isEmpty()) {
             for (Status status : Status.values()) {
                 if (parametros[0].compareToIgnoreCase(status.toString()) == 0) {
@@ -21,8 +21,8 @@ public class AtaqueStatus extends Ataque {
     }
 
     @Override
-    public void efeito() {
-        super.efeito();
+    public void efeito(Pokemon atacante, Pokemon defensor) {
+
     }
 
     public void setStatus(Status status) {

@@ -216,10 +216,10 @@ public class Batalha {
 
             for (int i = 0; i < args[1]; i++) {
                 Pokemon addPokemon = new Pokemon(args[j], args[j + 1]);
-                addPokemon.novoAtaque(args[j + 2], addPokemon);
-                addPokemon.novoAtaque(args[j + 3], addPokemon);
-                addPokemon.novoAtaque(args[j + 4], addPokemon);
-                addPokemon.novoAtaque(args[j + 5], addPokemon);
+                addPokemon.novoAtaque(args[j + 2]);
+                addPokemon.novoAtaque(args[j + 3]);
+                addPokemon.novoAtaque(args[j + 4]);
+                addPokemon.novoAtaque(args[j + 5]);
                 this.jogador0.adicionarPokemon(addPokemon);
                 j += 6;
             }
@@ -236,10 +236,10 @@ public class Batalha {
 
             for (int i = 0; i < args[argsSegundoJogador + 1]; i++) {
                 Pokemon addPokemon = new Pokemon(args[j], args[j + 1]);
-                addPokemon.novoAtaque(args[j + 2], addPokemon);
-                addPokemon.novoAtaque(args[j + 3], addPokemon);
-                addPokemon.novoAtaque(args[j + 4], addPokemon);
-                addPokemon.novoAtaque(args[j + 5], addPokemon);
+                addPokemon.novoAtaque(args[j + 2]);
+                addPokemon.novoAtaque(args[j + 3]);
+                addPokemon.novoAtaque(args[j + 4]);
+                addPokemon.novoAtaque(args[j + 5]);
                 this.jogador1.adicionarPokemon(addPokemon);
                 j += 6;
             }
@@ -263,10 +263,10 @@ public class Batalha {
             int j = 2;
             for (int i = 0; i < args[1]; i++) {
                 Pokemon addPokemon = new Pokemon(args[j], args[j+1]);
-                addPokemon.novoAtaque(args[j + 2], addPokemon);
-                addPokemon.novoAtaque(args[j + 3], addPokemon);
-                addPokemon.novoAtaque(args[j + 4], addPokemon);
-                addPokemon.novoAtaque(args[j + 5], addPokemon);
+                addPokemon.novoAtaque(args[j + 2]);
+                addPokemon.novoAtaque(args[j + 3]);
+                addPokemon.novoAtaque(args[j + 4]);
+                addPokemon.novoAtaque(args[j + 5]);
                 this.jogador0.adicionarPokemon(addPokemon);
                 j += 6;
             }
@@ -346,7 +346,7 @@ public class Batalha {
                         System.out.printf("Ataque %d: ", n + 1);
                         idAtaque = opcao.nextInt();
                     }
-                    addPokemon.novoAtaque(idAtaque, addPokemon);
+                    addPokemon.novoAtaque(idAtaque);
                 }
                 jogadorIt.adicionarPokemon(addPokemon);
             }
@@ -439,7 +439,7 @@ public class Batalha {
                             System.out.printf("Ataque %d: ", n + 1);
                             idAtaque = opcao.nextInt();
                         }
-                        addPokemon.novoAtaque(idAtaque, addPokemon);
+                        addPokemon.novoAtaque(idAtaque);
                     }
                     jogadorIt.adicionarPokemon(addPokemon);
                 }

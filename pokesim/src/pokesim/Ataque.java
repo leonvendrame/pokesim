@@ -8,13 +8,11 @@ public class Ataque {
     private double  power;
     private double  accuracy;
     private Tipo    tipo;
-    private Pokemon pokemon;
 
-    Ataque(int id, Pokemon pokemon) {
+    Ataque(int id) {
         int idReal = id - 1;
         String[][] ataque = Batalha.getTabelaAtaque();
         setId(idReal);
-        setPokemon(pokemon);
         setNome(ataque[idReal][1]);
         setPpMax(Double.parseDouble(ataque[idReal][3]));
         setPpAtual(Double.parseDouble(ataque[idReal][3]));
@@ -38,7 +36,7 @@ public class Ataque {
         return tipo;
     }
 
-    public void efeito() {
+    public void efeito(Pokemon atacante, Pokemon defensor) {
         return;
     }
 
@@ -80,13 +78,5 @@ public class Ataque {
 
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
-    }
-
-    public Pokemon getPokemon() {
-        return this.pokemon;
-    }
-
-    public void setPokemon(Pokemon pokemon) {
-        this.pokemon = pokemon;
     }
 }

@@ -7,8 +7,8 @@ public class AtaqueModifier extends Ataque {
     private int n;
     private int chance;
 
-    AtaqueModifier(int id, Pokemon pokemon, String[] parametros) {
-        super(id, pokemon);
+    AtaqueModifier(int id, String[] parametros) {
+        super(id);
         for (Atributo atributo : Atributo.values()) {
             if (parametros[0].compareToIgnoreCase(atributo.toString()) == 0){
                 setMod(atributo);
@@ -19,9 +19,7 @@ public class AtaqueModifier extends Ataque {
     }
 
     @Override
-    public void efeito() {
-        super.efeito();
-
+    public void efeito(Pokemon atacante, Pokemon defensor) {
         if (ocorre()) {
             if (getN() >= 0) {
                 //efeito no pokemon

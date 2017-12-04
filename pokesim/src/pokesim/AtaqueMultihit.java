@@ -4,15 +4,15 @@ public class AtaqueMultihit extends Ataque {
     private int min;
     private int max;
 
-    AtaqueMultihit(int id, Pokemon pokemon, String[] parametros) {
-        super(id, pokemon);
+    AtaqueMultihit(int id, String[] parametros) {
+        super(id);
         setMin(Integer.parseInt(parametros[0]));
         setMax(Integer.parseInt(parametros[1]));
     }
 
     @Override
-    public void efeito() {
-        super.efeito();
+    public void efeito(Pokemon atacante, Pokemon defensor) {
+
     }
 
     public int getMin() {

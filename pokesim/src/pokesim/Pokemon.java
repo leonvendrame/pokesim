@@ -164,7 +164,7 @@ public class Pokemon {
         return this.ataques;
     }
 
-    public void novoAtaque(int id, Pokemon pokemon) {
+    public void novoAtaque(int id) {
         if (id > 0) {
             int idReal = id - 1;
             String[] parametros = null;
@@ -174,19 +174,19 @@ public class Pokemon {
             parametros = tabAtaques[idReal][7].split(", |\\r");
 
             if (opcao.compareToIgnoreCase("comum") == 0) {
-                novo = new Ataque(id, pokemon);
+                novo = new Ataque(id);
             } else if (opcao.compareToIgnoreCase("hp") == 0) {
-                novo = new AtaqueHP(id, pokemon, parametros);
+                novo = new AtaqueHP(id, parametros);
             } else if (opcao.compareToIgnoreCase("multihit") == 0) {
-                novo = new AtaqueMultihit(id, pokemon, parametros);
+                novo = new AtaqueMultihit(id, parametros);
             } else if (opcao.compareToIgnoreCase("modifier") == 0) {
-                novo = new AtaqueModifier(id, pokemon, parametros);
+                novo = new AtaqueModifier(id, parametros);
             } else if (opcao.compareToIgnoreCase("status") == 0) {
-                novo = new AtaqueStatus(id, pokemon, parametros);
+                novo = new AtaqueStatus(id,parametros);
             } else if (opcao.compareToIgnoreCase("fixo") == 0) {
-                novo = new AtaqueFixo(id, pokemon, parametros);
+                novo = new AtaqueFixo(id, parametros);
             } else if (opcao.compareToIgnoreCase("charge") == 0) {
-                novo = new AtaqueCharge(id, pokemon);
+                novo = new AtaqueCharge(id);
             }
             if (novo != null) {
                 adicionarAtaque(novo);
