@@ -73,11 +73,11 @@ public class Pokemon {
     }
 
     public Status getStatus() {
-        return status;
+        return this.status;
     }
 
     public int getLevel() {
-        return level;
+        return this.level;
     }
 
     public void setLevel(int level) {
@@ -85,7 +85,11 @@ public class Pokemon {
     }
 
     public void setHpAtual(double hpAtual) {
-        this.hpAtual = hpAtual;
+        if (hpAtual > valorAtributo(Atributo.HPMAX)) {
+            setHpAtual(valorAtributo(Atributo.HPMAX));
+        } else {
+            this.hpAtual = hpAtual;
+        }
     }
 
     public void setHpMax(double hpMax) {
@@ -133,7 +137,7 @@ public class Pokemon {
     }
 
     public boolean isConfusion() {
-        return confusion;
+        return this.confusion;
     }
 
     public void setConfusion(boolean confusion) {
@@ -141,7 +145,7 @@ public class Pokemon {
     }
 
     public boolean isFlinch() {
-        return flinch;
+        return this.flinch;
     }
 
     public void setFlinch(boolean flinch) {
@@ -153,14 +157,14 @@ public class Pokemon {
     }
 
     public Especie getEspecie() {
-        return especie;
+        return this.especie;
     }
 
     public List<Ataque> getAtaques() {
         return this.ataques;
     }
 
-    public void novoAtaque(int id) {
+    public void novoAtaque(int id, Pokemon pokemon) {
         if (id > 0) {
             int idReal = id - 1;
             String[] parametros = null;
@@ -169,20 +173,20 @@ public class Pokemon {
             Ataque novo = null;
             parametros = tabAtaques[idReal][7].split(", |\\r");
 
-            if (opcao.compareToIgnoreCase("hp") == 0) {
-                novo = new AtaqueHP(id, parametros);
-            } else if (opcao.compareToIgnoreCase("comum") == 0) {
-                novo = new Ataque(id);
+            if (opcao.compareToIgnoreCase("comum") == 0) {
+                novo = new Ataque(id, pokemon);
+            } else if (opcao.compareToIgnoreCase("hp") == 0) {
+                novo = new AtaqueHP(id, pokemon, parametros);
             } else if (opcao.compareToIgnoreCase("multihit") == 0) {
-                novo = new AtaqueMultihit(id, parametros);
+                novo = new AtaqueMultihit(id, pokemon, parametros);
             } else if (opcao.compareToIgnoreCase("modifier") == 0) {
-                novo = new AtaqueModifier(id, parametros);
+                novo = new AtaqueModifier(id, pokemon, parametros);
             } else if (opcao.compareToIgnoreCase("status") == 0) {
-                novo = new AtaqueStatus(id, parametros);
+                novo = new AtaqueStatus(id, pokemon, parametros);
             } else if (opcao.compareToIgnoreCase("fixo") == 0) {
-                novo = new AtaqueFixo(id, parametros);
+                novo = new AtaqueFixo(id, pokemon, parametros);
             } else if (opcao.compareToIgnoreCase("charge") == 0) {
-                novo = new AtaqueCharge(id, parametros);
+                novo = new AtaqueCharge(id, pokemon);
             }
             if (novo != null) {
                 adicionarAtaque(novo);
@@ -195,6 +199,7 @@ public class Pokemon {
         if (this.getAtaques().size() < 4) {
             this.getAtaques().add(ataque);
         }
+        return;
     }
 
     public void getInfoPokemon() {

@@ -2,8 +2,8 @@ package pokesim;
 
 public class AtaqueCharge extends Ataque {
 
-    AtaqueCharge(int id, String[] parametros) {
-        super(id);
+    AtaqueCharge(int id, Pokemon pokemon) {
+        super(id, pokemon);
     }
 
     @Override
