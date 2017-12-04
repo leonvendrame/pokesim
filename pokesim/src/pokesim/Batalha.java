@@ -19,6 +19,8 @@ public class Batalha {
         int countLinhaAtaques = 0;
         File arqTabEspecie;
         File arqTabAtaques;
+        Scanner bufferCount = null;
+        Scanner buffer = null;
 
         if (System.getProperty("os.name").compareToIgnoreCase("linux") == 0) {
             arqTabEspecie = new File("src/pokesim/tabelaDeEspecies.txt");
@@ -27,8 +29,6 @@ public class Batalha {
             arqTabEspecie = new File("src\\pokesim\\tabelaDeEspecies.txt");
             arqTabAtaques = new File("src\\pokesim\\tabelaDeAtaques.txt");
         }
-        Scanner bufferCount = null;
-        Scanner buffer = null;
 
         try {
             buffer = new Scanner(arqTabEspecie).useDelimiter("\\t|\\n|    ");
