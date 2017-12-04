@@ -22,5 +22,8 @@ public class Main {
 
         pokeBatalha.inicializarJogadores(argsInt);
 
+        pokeBatalha.getJogador1().trocarPokemon();
+
+        pokeBatalha.getResumoJogador(pokeBatalha.getJogador1());
     }
 }

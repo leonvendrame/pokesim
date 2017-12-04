@@ -244,11 +244,11 @@ public class Batalha {
                 j += 6;
             }
 
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
             this.getResumoJogador(jogador0);
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
             this.getResumoJogador(jogador1);
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
 
             return;
         }
@@ -271,9 +271,9 @@ public class Batalha {
                 j += 6;
             }
 
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
             this.getResumoJogador(jogador0);
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
 
             Scanner opcao = new Scanner(System.in);
             int entrada, auxId, auxLvl;
@@ -352,11 +352,11 @@ public class Batalha {
 
             System.out.printf("\n");
 
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
             this.getResumoJogador(jogador0);
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
             this.getResumoJogador(jogador1);
-            System.out.println("-------------------------------------------");
+//            System.out.println("-------------------------------------------");
 
             return;
         }
@@ -465,6 +465,7 @@ public class Batalha {
     }
 
     public void getResumoJogador(Jogador jogador) {
+        System.out.println("-------------------------------------------");
         System.out.printf("\t\tTime - Jogador %d - %s\n\n", this.jogador0 == jogador ? 1 : 2 , jogador.getClass().getTypeName() == "pokesim.Humano" ? "Humano" : "Máquina" );
         for (Pokemon pokemon : jogador.getTime()) {
             System.out.printf("%-14s LVL %4s\n", pokemon.getEspecie().getNome(), pokemon.getLevel());
@@ -474,6 +475,7 @@ public class Batalha {
             }
             System.out.printf("\n");
         }
+        System.out.println("-------------------------------------------");
         return;
     }
 
