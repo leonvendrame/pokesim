@@ -13,7 +13,7 @@ public abstract class Jogador {
         this.time = new ArrayList<>();
     }
 
-    public abstract void escolherComando();
+    public abstract int escolherComando();
 
     public void trocarPokemon() {
         System.out.println("Lista de opções dísponíveis:\n");
@@ -59,7 +59,34 @@ public abstract class Jogador {
         }
     }
 
-    public void usarAtaque() {
+    public void usarAtaque(int ataqueEscolha, Jogador oponente) {
+        ataqueEscolha = 0;
+
+        Pokemon atacante;
+        Pokemon defensor;
+
+        atacante = getTime().get(0);
+        defensor = oponente.getTime().get(0);
+
+        atacante.getAtaques().get(ataqueEscolha).efeito(atacante, defensor);
+
+        if (atacante.getStatus() == Status.FAINTED) {
+            Pokemon troca = atacante;
+            int i = 0;
+            for (Pokemon pokemon : getTime()) {
+                getTime().set(i, getTime().get(++i));
+            }
+            getTime().set(i, troca);
+        }
+
+        if (defensor.getStatus() == Status.FAINTED) {
+            Pokemon troca = defensor;
+            int i = 0;
+            while (i + 1 < oponente.getTime().size()) {
+                oponente.getTime().set(i, oponente.getTime().get(++i));
+            }
+            oponente.getTime().set(i, troca);
+        }
         return;
     }
 }

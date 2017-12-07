@@ -7,7 +7,7 @@ public class Humano extends Jogador {
     }
 
     @Override
-    public void escolherComando() {
-        return;
+    public int escolherComando() {
+        return 0;
     }
 }
