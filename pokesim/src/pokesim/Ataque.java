@@ -1,5 +1,9 @@
 package pokesim;
 
+import java.util.HashSet;
+import java.util.Random;
+import java.util.Set;
+
 public class Ataque {
     private int     id;
     private String  nome;
@@ -33,23 +37,135 @@ public class Ataque {
     }
 
     public Tipo getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
     public void efeito(Pokemon atacante, Pokemon defensor) {
+        setPpAtual(getPpAtual() - 1);
+        if (!calculoAcerto(atacante, defensor)) {
+            System.out.printf(Main.ANSI_RED + "O Pokemon %s errou.\n" + Main.ANSI_RESET, atacante.getEspecie().getNome());
+        } else {
+            double dano = calculoDano(atacante, defensor);
+            defensor.setHpAtual(defensor.valorAtributo(Atributo.HPATUAL) - dano);
+        }
         return;
     }
 
-    public boolean calculoCritico() {
+    public boolean calculoCritico(Pokemon atacante) {
+        double chance = atacante.valorAtributo(Atributo.SPD) / 512;
+        double sorteio;
+
+        if (chance > 1) {
+            return true;
+        } else {
+            sorteio = Math.random();
+            if (sorteio <= chance) {
+                return true;
+            }
+        }
+
         return false;
     }
 
-    public boolean calculoAcerto() {
+    public boolean calculoAcerto(Pokemon atacante, Pokemon defensor) {
+        double prob;
+        int indiceAtk = atacante.getModifierAccuracy() + 6;
+        int indiceDef = defensor.getModifierEvasion() + 6;
+
+        prob = getAccuracy() * (Batalha.getTabelaAE()[indiceAtk][1] / Batalha.getTabelaAE()[indiceDef][1]);
+
+        if (prob >= 100) {
+            return true;
+        } else {
+            Random random = new Random();
+            int sorteio = random.nextInt(101);
+            if (sorteio <= prob) {
+                return true;
+            }
+        }
+
         return false;
     }
 
-    public double calculoDano(double x) {
-        return x;
+    public double calculoDano(Pokemon atacante, Pokemon defensor) {
+        int lvl;
+        double power, atk = 0, def = 0, dano;
+
+        lvl = atacante.getLevel();
+        power = getPower();
+
+        Set<Tipo> tipos_atk = tipos_atk();
+        Set<Tipo> tipos_spe = tipos_spe();
+
+        if (tipos_atk.contains(getTipo())) {
+            atk = atacante.valorAtributo(Atributo.ATK);
+            def = defensor.valorAtributo(Atributo.DEF);
+        } else if (tipos_spe.contains(getTipo())) {
+            atk = atacante.valorAtributo(Atributo.SPE);
+            def = defensor.valorAtributo(Atributo.SPE);
+        }
+
+        if (calculoCritico(atacante)) {
+            lvl *= 2;
+        }
+
+        if (atacante.getStatus() == Status.BURN) {
+            atk /= 2;
+        }
+
+        if (atk < 0 || atk > 255) {
+            if (atk < 0) {
+                atk = 0;
+            } else if (atk > 255) {
+                atk = 255;
+            }
+        }
+
+        if (def < 0 || def > 255) {
+            if (def < 0) {
+                def = 0;
+            } else if (def > 255) {
+                def = 255;
+            }
+        }
+
+        dano = (lvl * atk * power / def / 50) + 2;
+
+        if (getTipo() == atacante.getEspecie().getTipo1() || getTipo() == atacante.getEspecie().getTipo2()) {
+            dano *= 1.5;
+        }
+
+        int i = 0;
+        while (getTipo().toString().compareToIgnoreCase(Batalha.getTabelaDano()[i][0]) != 0) {
+            i++;
+        }
+
+        if (defensor.getEspecie().getTipo1() != null) {
+            int j = 0;
+            double multiplicador;
+            while (defensor.getEspecie().getTipo1().toString().compareToIgnoreCase(Batalha.getTabelaDano()[0][j]) != 0) {
+                j++;
+            }
+            multiplicador = Double.parseDouble(Batalha.getTabelaDano()[i][j]);
+            dano *= multiplicador;
+        }
+
+        if (defensor.getEspecie().getTipo2() != null) {
+            int k = 0;
+            double multiplicador;
+            while (defensor.getEspecie().getTipo2().toString().compareToIgnoreCase(Batalha.getTabelaDano()[0][k]) != 0) {
+                k++;
+            }
+            multiplicador = Double.parseDouble(Batalha.getTabelaDano()[i][k]);
+            dano *= multiplicador;
+        }
+
+        Random random = new Random();
+        int r = random.nextInt(39) + 217;
+
+        dano = (dano * r) / 255;
+
+        return dano;
     }
 
     public void setId(int id) {
@@ -68,6 +184,10 @@ public class Ataque {
         this.ppAtual = ppAtual;
     }
 
+    public double getPpAtual() {
+        return ppAtual;
+    }
+
     public void setPower(double power) {
         this.power = power;
     }
@@ -78,5 +198,38 @@ public class Ataque {
 
     public void setTipo(Tipo tipo) {
         this.tipo = tipo;
+    }
+
+    public double getPower() {
+        return this.power;
+    }
+
+    public double getAccuracy() {
+        return accuracy;
+    }
+
+    public Set<Tipo> tipos_atk() {
+        Set<Tipo> tipos = new HashSet<Tipo>();
+        tipos.add(Tipo.NORMAL);
+        tipos.add(Tipo.FIGHTING);
+        tipos.add(Tipo.FLYING);
+        tipos.add(Tipo.POISON);
+        tipos.add(Tipo.GROUND);
+        tipos.add(Tipo.ROCK);
+        tipos.add(Tipo.BUG);
+        tipos.add(Tipo.GHOST);
+        return tipos;
+    }
+
+    public Set<Tipo> tipos_spe() {
+        Set<Tipo> tipos = new HashSet<Tipo>();
+        tipos.add(Tipo.FIRE);
+        tipos.add(Tipo.WATER);
+        tipos.add(Tipo.ELETRIC);
+        tipos.add(Tipo.GRASS);
+        tipos.add(Tipo.ICE);
+        tipos.add(Tipo.PSYCHIC);
+        tipos.add(Tipo.DRAGON);
+        return tipos;
     }
 }

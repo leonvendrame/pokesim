@@ -85,10 +85,15 @@ public class Pokemon {
     }
 
     public void setHpAtual(double hpAtual) {
-        if (hpAtual > valorAtributo(Atributo.HPMAX)) {
-            setHpAtual(valorAtributo(Atributo.HPMAX));
+        if (hpAtual <= 0) {
+            this.hpAtual = 0;
+            this.setStatus(Status.FAINTED);
         } else {
-            this.hpAtual = hpAtual;
+            if (hpAtual > valorAtributo(Atributo.HPMAX)) {
+                setHpAtual(valorAtributo(Atributo.HPMAX));
+            } else {
+                this.hpAtual = hpAtual;
+            }
         }
     }
 
@@ -215,5 +220,29 @@ public class Pokemon {
         System.out.printf("DEF: \t\t%.2f\n", this.valorAtributo(Atributo.DEF));
         System.out.printf("SPE: \t\t%.2f\n", this.valorAtributo(Atributo.SPE));
         System.out.printf("SPD: \t\t%.2f\n\n", this.valorAtributo(Atributo.SPD));
+    }
+
+    public int getModifierAccuracy() {
+        return this.modifierAccuracy;
+    }
+
+    public int getModifierEvasion() {
+        return this.modifierEvasion;
+    }
+
+    public int getModifierAtk() {
+        return this.modifierAtk;
+    }
+
+    public int getModifierDef() {
+        return this.modifierDef;
+    }
+
+    public int getModifierSpe() {
+        return this.modifierSpe;
+    }
+
+    public int getModifierSpd() {
+        return this.modifierSpd;
     }
 }

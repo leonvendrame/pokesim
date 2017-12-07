@@ -18,9 +18,9 @@ public class AtaqueHP extends Ataque {
     public void efeito(Pokemon atacante, Pokemon defensor) {
 
         if (getValor() == -1) {
-            //seta o dano
+            atacante.setHpAtual(atacante.valorAtributo(Atributo.HPATUAL) + this.valor);
         } else {
-//            this.getPokemon().setHpAtual(this.getPokemon().valorAtributo(Atributo.HPATUAL) + this.valor);
+            atacante.setHpAtual(atacante.valorAtributo(Atributo.HPATUAL) + this.valor);
         }
     }
 

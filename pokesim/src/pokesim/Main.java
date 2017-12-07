@@ -24,7 +24,9 @@ public class Main {
 
 //        pokeBatalha.getJogador1().getTime().get(0).setStatus(Status.FAINTED);
 
-        pokeBatalha.getJogador1().trocarPokemon();
+//        pokeBatalha.getJogador1().trocarPokemon();
+
+        pokeBatalha.getJogador0().getTime().get(0).getAtaques().get(0).efeito(pokeBatalha.getJogador0().getTime().get(0), pokeBatalha.getJogador1().getTime().get(0));
 
         pokeBatalha.getResumoJogador(pokeBatalha.getJogador1());
     }

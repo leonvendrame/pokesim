@@ -13,6 +13,8 @@ public class Batalha {
     private Jogador jogador1 = null;
     private static String[][] tabelaEspecie;
     private static String[][] tabelaAtaque;
+    private static String[][] tabelaDano;
+    private static int[][] tabelaAE;
 
     public static void carregarTabelas() {
         int countLinhasEspecie = 0;
@@ -100,6 +102,9 @@ public class Batalha {
 //            System.out.printf("\n");
 //        }
 
+        carregaTabelaDano();
+        carregaTabelaAE();
+
         return;
     }
 
@@ -109,6 +114,10 @@ public class Batalha {
 
     public static String[][] getTabelaAtaque() {
         return tabelaAtaque;
+    }
+
+    public static String[][] getTabelaDano() {
+        return tabelaDano;
     }
 
     public int checarArgumentos(int[] args) {
@@ -522,5 +531,79 @@ public class Batalha {
 
     public void executarTurno() {
         return;
+    }
+
+    public static void carregaTabelaDano() {
+        int countLinhas = 0;
+        File arqTabDano;
+        Scanner bufferCount = null;
+        Scanner buffer = null;
+
+        if (System.getProperty("os.name").compareToIgnoreCase("linux") == 0) {
+            arqTabDano = new File("src/pokesim/tabelaDano.txt");
+        } else {
+            arqTabDano = new File("src\\pokesim\\tabelaDano.txt");
+        }
+
+        try {
+            buffer = new Scanner(arqTabDano).useDelimiter("\\t|\\n|    ");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            bufferCount = new Scanner(arqTabDano);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();;
+        }
+
+        while (bufferCount.hasNextLine()){
+            countLinhas++;
+            bufferCount.nextLine();
+        }
+
+        Batalha.tabelaDano = new String[countLinhas][16];
+
+        for (int i = 0; i < countLinhas; i++) {
+            for (int j = 0; j < 16; j++) {
+                if (buffer.hasNext())
+                    Batalha.tabelaDano[i][j] = buffer.next();
+            }
+        }
+
+//        for (int i = 0; i < countLinhas; i++) {
+//            for (int j = 0; j < 16; j++) {
+//                System.out.printf("%15s", Batalha.tabelaDano[i][j]);
+//            }
+//            System.out.printf("\n");
+//        }
+    }
+
+    public static void carregaTabelaAE() {
+        tabelaAE = new int[13][2];
+
+        int j = -6;
+        for (int i = 0; i < 13; i++) {
+            tabelaAE[i][0] = j;
+            j++;
+        }
+
+        tabelaAE[0][1] = 33;
+        tabelaAE[1][1] = 37;
+        tabelaAE[2][1] = 43;
+        tabelaAE[3][1] = 50;
+        tabelaAE[4][1] = 60;
+        tabelaAE[5][1] = 75;
+        tabelaAE[6][1] = 100;
+        tabelaAE[7][1] = 133;
+        tabelaAE[8][1] = 166;
+        tabelaAE[9][1] = 200;
+        tabelaAE[10][1] = 233;
+        tabelaAE[11][1] = 266;
+        tabelaAE[12][1] = 300;
+    }
+
+    public static int[][] getTabelaAE() {
+        return tabelaAE;
     }
 }
