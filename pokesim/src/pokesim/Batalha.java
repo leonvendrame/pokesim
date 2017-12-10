@@ -531,57 +531,37 @@ public class Batalha {
 
     public void executarTurno() {
         int escolhaJogador0, escolhaJogador1;
-        int atkJogador0, atkJogador1;
+        int atkJogador0 = -1, atkJogador1 = -1;
         int trocaJogador0, trocaJogador1;
 
         escolhaJogador0 = getJogador0().escolherComando();
         escolhaJogador1 = getJogador1().escolherComando();
 
         if (escolhaJogador0 == 1) {
-            atkJogador0 = escolherAtaque(getJogador0());
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, 1);
+            atkJogador0 = getJogador0().escolherAtaque();
         } else {
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, 1);
             getJogador0().trocarPokemon();
         }
+
+        System.out.println("\n");
+
         if (escolhaJogador1 == 1) {
-            atkJogador1 = escolherAtaque(getJogador1());
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, 2);
+            atkJogador1 = getJogador1().escolherAtaque();
+        } else {
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, 2);
+            getJogador1().trocarPokemon();
         }
 
-        getJogador0().usarAtaque(0, getJogador1());
-        getJogador1().usarAtaque(0, getJogador0());
+        System.out.println("\n");
 
-        getJogador1().trocarPokemon();
+        getJogador0().usarAtaque(atkJogador0, getJogador1());
+        getJogador1().usarAtaque(atkJogador1, getJogador0());
 
 
         return;
-    }
-
-    public int escolherAtaque(Jogador jogador) {
-        Scanner scanner = new Scanner(System.in);
-        int opcao;
-
-        System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, jogador == getJogador0() ? 1 : 2);
-
-        System.out.println("Seus ataques dísponíveis são: ");
-        for (Ataque ataque : jogador.getTime().get(0).getAtaques()) {
-            System.out.printf("%d - %-30s\n", jogador.getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome());
-        }
-        System.out.printf("Entre com sua escolha: ");
-        opcao = scanner.nextInt();
-        opcao--;
-        while (opcao > jogador.getTime().get(0).getAtaques().size() - 1 || opcao < 0) {
-            System.out.println(Main.ANSI_RED + "Opção Inválida, por favor escolha novamente." + Main.ANSI_RESET);
-            System.out.printf("Entre com sua escolha: ");
-            opcao = scanner.nextInt();
-            opcao--;
-        }
-        while (jogador.getTime().get(0).getAtaques().get(opcao).getPpAtual() <= 0) {
-            System.out.println(Main.ANSI_RED + "Esse ataque não pode ser mais utilizado, por favor escolha outro." + Main.ANSI_RESET);
-            System.out.printf("Entre com sua escolha: ");
-            opcao = scanner.nextInt();
-            opcao--;
-        }
-
-        return opcao;
     }
 
     public static void carregaTabelaDano() {

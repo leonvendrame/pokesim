@@ -16,7 +16,7 @@ public abstract class Jogador {
     public abstract int escolherComando();
 
     public void trocarPokemon() {
-        System.out.println("Lista de opções dísponíveis:\n");
+        System.out.println("Lista de opções de troca dísponíveis:\n");
         for (Pokemon pokemon : getTime()) {
             if (pokemon.getStatus() != Status.FAINTED) {
                 System.out.printf(Main.ANSI_GREEN + "%s - %s (HP: %s | %s)\n" + Main.ANSI_RESET, getTime().indexOf(pokemon), pokemon.getEspecie().getNome().toString(),
@@ -44,9 +44,37 @@ public abstract class Jogador {
             Pokemon troca = getTime().get(0);
             getTime().set(0, getTime().get(opcao));
             getTime().set(opcao, troca);
+            System.out.printf(Main.ANSI_GREEN + "Troca efeutada com sucesso.\n" + Main.ANSI_RESET + "Seu pokemon atacante atual é %s.", getTime().get(0).getEspecie().getNome());
         }
 
         return;
+    }
+
+    public int escolherAtaque() {
+        Scanner scanner = new Scanner(System.in);
+        int opcao;
+
+        System.out.println("Seus ataques dísponíveis são: ");
+        for (Ataque ataque : getTime().get(0).getAtaques()) {
+            System.out.printf("%d - %-30s\n", getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome());
+        }
+        System.out.printf("Entre com sua escolha: ");
+        opcao = scanner.nextInt();
+        opcao--;
+        while (opcao > getTime().get(0).getAtaques().size() - 1 || opcao < 0) {
+            System.out.println(Main.ANSI_RED + "Opção Inválida, por favor escolha novamente." + Main.ANSI_RESET);
+            System.out.printf("Entre com sua escolha: ");
+            opcao = scanner.nextInt();
+            opcao--;
+        }
+        while (getTime().get(0).getAtaques().get(opcao).getPpAtual() <= 0) {
+            System.out.println(Main.ANSI_RED + "Esse ataque não pode ser mais utilizado, por favor escolha outro." + Main.ANSI_RESET);
+            System.out.printf("Entre com sua escolha: ");
+            opcao = scanner.nextInt();
+            opcao--;
+        }
+
+        return opcao;
     }
 
     public List<Pokemon> getTime() {
@@ -60,7 +88,9 @@ public abstract class Jogador {
     }
 
     public void usarAtaque(int ataqueEscolha, Jogador oponente) {
-        ataqueEscolha = 0;
+        if (ataqueEscolha == -1) {
+            return;
+        }
 
         Pokemon atacante;
         Pokemon defensor;
