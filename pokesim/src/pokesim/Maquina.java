@@ -16,13 +16,13 @@ public class Maquina extends Jogador {
         System.out.println("1 - Usar ataque");
         System.out.println("2 - Trocar pokemon");
         System.out.printf("Entre com sua escolha: ");
-        System.out.printf(Main.ANSI_BLUE + "Escolhendo... " + Main.ANSI_RESET);
+        System.out.printf(Main.ANSI_BLUE + "Escolhendo... \n" + Main.ANSI_RESET);
         try {
             TimeUnit.SECONDS.sleep(2);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.printf("\n\n");
+        System.out.printf("\n");
         return 1;
     }
 
@@ -30,10 +30,10 @@ public class Maquina extends Jogador {
     public int escolherAtaque() {
         System.out.println("Seus ataques dísponíveis são: ");
         for (Ataque ataque : getTime().get(0).getAtaques()) {
-            System.out.printf("%d - %-30s\n", getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome());
+            System.out.printf("%d - %s - %s\n", getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome(), ataque.getTipo());
         }
         System.out.printf("Entre com sua escolha: ");
-        System.out.printf(Main.ANSI_BLUE + "Escolhendo... " + Main.ANSI_RESET);
+        System.out.printf(Main.ANSI_BLUE + "Escolhendo... \n\n" + Main.ANSI_RESET);
 
         try {
             TimeUnit.SECONDS.sleep(2);

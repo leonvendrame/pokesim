@@ -42,8 +42,9 @@ public class Ataque {
 
     public void efeito(Pokemon atacante, Pokemon defensor) {
         setPpAtual(getPpAtual() - 1);
+        System.out.printf("%s usou %s.\n", atacante.getEspecie().getNome(), getNome());
         if (!calculoAcerto(atacante, defensor)) {
-            System.out.printf(Main.ANSI_RED + "O Pokemon %s errou.\n" + Main.ANSI_RESET, atacante.getEspecie().getNome());
+            System.out.printf(Main.ANSI_RED + "%s errou.\n" + Main.ANSI_RESET, atacante.getEspecie().getNome());
         } else {
             double dano = calculoDano(atacante, defensor);
             defensor.setHpAtual(defensor.valorAtributo(Atributo.HPATUAL) - dano);

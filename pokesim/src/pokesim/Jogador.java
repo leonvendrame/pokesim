@@ -16,7 +16,7 @@ public abstract class Jogador {
     public abstract int escolherComando();
 
     public int trocarPokemon() {
-        System.out.println("Lista de opções de troca dísponíveis:\n");
+        System.out.println("Lista de opções de troca dísponíveis:");
         for (Pokemon pokemon : getTime()) {
             if (pokemon.getStatus() != Status.FAINTED) {
                 System.out.printf(Main.ANSI_GREEN + "%s - %s (HP: %s | %s)\n" + Main.ANSI_RESET, getTime().indexOf(pokemon) + 1, pokemon.getEspecie().getNome().toString(),
@@ -28,7 +28,7 @@ public abstract class Jogador {
         }
 
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("\nEscolha sua opção: ");
+        System.out.printf("Escolha sua opção: ");
         int opcao = scanner.nextInt();
         opcao--;
 
@@ -63,7 +63,7 @@ public abstract class Jogador {
 
         System.out.println("Seus ataques dísponíveis são: ");
         for (Ataque ataque : getTime().get(0).getAtaques()) {
-            System.out.printf("%d - %-30s\n", getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome());
+            System.out.printf("%d - %s - %s\n", getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome(), ataque.getTipo());
         }
         System.out.printf("Entre com sua escolha: ");
         opcao = scanner.nextInt();

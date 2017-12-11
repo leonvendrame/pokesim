@@ -12,23 +12,12 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pokesim/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="39" column="58" lean-forward="true" selection-start-line="39" selection-start-column="58" selection-end-line="39" selection-end-column="58" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Batalha.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/pokesim/Batalha.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="188">
-              <caret line="572" column="112" lean-forward="false" selection-start-line="572" selection-start-column="112" selection-end-line="572" selection-end-column="112" />
+            <state relative-caret-position="34">
+              <caret line="5" column="37" lean-forward="false" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
               <folding>
-                <element signature="imports" expanded="true" />
                 <element signature="method#carregarTabelas#0;class#Batalha#0" expanded="false" />
                 <element signature="method#checarArgumentos#0;class#Batalha#0" expanded="false" />
                 <element signature="method#validaCamposArg#0;class#Batalha#0" expanded="false" />
@@ -38,7 +27,24 @@
                 <element signature="method#printarTabelaEspecie#0;class#Batalha#0" expanded="false" />
                 <element signature="method#printarTabelaAtaque#0;class#Batalha#0" expanded="false" />
                 <element signature="method#continuarJogo#0;class#Batalha#0" expanded="false" />
+                <element signature="method#executarTurno#0;class#Batalha#0" expanded="false" />
+                <element signature="method#trocaFainted#0;class#Batalha#0" expanded="false" />
+                <element signature="method#carregaTabelaDano#0;class#Batalha#0" expanded="false" />
                 <element signature="method#carregaTabelaAE#0;class#Batalha#0" expanded="false" />
+                <element signature="method#inializaJogManualmente#0;class#Batalha#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Maquina.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pokesim/Maquina.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="355">
+              <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="method#escolherAtaque#0;class#Maquina#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -47,11 +53,14 @@
       <file leaf-file-name="Ataque.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/pokesim/Ataque.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="139">
-              <caret line="168" column="0" lean-forward="false" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
+            <state relative-caret-position="124">
+              <caret line="42" column="59" lean-forward="false" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
               <folding>
                 <element signature="method#Ataque#0;class#Ataque#0" expanded="false" />
+                <element signature="method#efeito#0;class#Ataque#0" expanded="false" />
                 <element signature="method#calculoCritico#0;class#Ataque#0" expanded="false" />
+                <element signature="method#calculoAcerto#0;class#Ataque#0" expanded="false" />
+                <element signature="method#calculoDano#0;class#Ataque#0" expanded="false" />
                 <element signature="method#tipos_atk#0;class#Ataque#0" expanded="false" />
                 <element signature="method#tipos_spe#0;class#Ataque#0" expanded="false" />
               </folding>
@@ -59,12 +68,17 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="tabelaDeAtaques.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/pokesim/tabelaDeAtaques.txt">
+      <file leaf-file-name="Jogador.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/pokesim/Jogador.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="33" column="45" lean-forward="true" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
-              <folding />
+            <state relative-caret-position="51">
+              <caret line="18" column="65" lean-forward="false" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+              <folding>
+                <element signature="method#efetivarTroca#0;class#Jogador#0" expanded="false" />
+                <element signature="method#escolherAtaque#0;class#Jogador#0" expanded="false" />
+                <element signature="method#adicionarPokemon#0;class#Jogador#0" expanded="false" />
+                <element signature="method#usarAtaque#0;class#Jogador#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -92,6 +106,7 @@
       <find>modifier</find>
       <find>-------------------------------------------</find>
       <find>hp</find>
+      <find>Edge</find>
     </findStrings>
     <replaceStrings>
       <replace>ataque</replace>
@@ -118,13 +133,13 @@
         <option value="$PROJECT_DIR$/src/pokesim/AtaqueFixo.java" />
         <option value="$PROJECT_DIR$/src/pokesim/AtaqueModifier.java" />
         <option value="$PROJECT_DIR$/src/pokesim/AtaqueStatus.java" />
+        <option value="$PROJECT_DIR$/src/pokesim/Humano.java" />
+        <option value="$PROJECT_DIR$/src/pokesim/Main.java" />
         <option value="$PROJECT_DIR$/src/pokesim/Pokemon.java" />
         <option value="$PROJECT_DIR$/src/pokesim/Maquina.java" />
-        <option value="$PROJECT_DIR$/src/pokesim/Humano.java" />
-        <option value="$PROJECT_DIR$/src/pokesim/Ataque.java" />
-        <option value="$PROJECT_DIR$/src/pokesim/AtaqueHP.java" />
         <option value="$PROJECT_DIR$/src/pokesim/Jogador.java" />
-        <option value="$PROJECT_DIR$/src/pokesim/Main.java" />
+        <option value="$PROJECT_DIR$/src/pokesim/AtaqueHP.java" />
+        <option value="$PROJECT_DIR$/src/pokesim/Ataque.java" />
         <option value="$PROJECT_DIR$/src/pokesim/Batalha.java" />
       </list>
     </option>
@@ -218,7 +233,7 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" value="pokesim.Main" />
       <option name="VM_PARAMETERS" value="" />
-      <option name="PROGRAM_PARAMETERS" value="1 1 6 40 156 25 0 0 0 2 7 20 157 0 0 0 2 40 33 0 0 0 " />
+      <option name="PROGRAM_PARAMETERS" value="1 1 20 50 0 0 0 150 0 1 36 55 0 15 35 75" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
@@ -317,18 +332,10 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/pokesim/Ataque.java</url>
-          <line>143</line>
-          <properties />
-          <option name="timeStamp" value="111" />
-        </line-breakpoint>
-      </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="113" />
+      <option name="time" value="116" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -608,19 +615,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Pokemon.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="e#2360#2361#0" expanded="false" />
-            <element signature="method#novoAtaque#0;class#Pokemon#0" expanded="false" />
-            <element signature="method#adicionarAtaque#0;class#Pokemon#0" expanded="false" />
-            <element signature="method#getInfoPokemon#0;class#Pokemon#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_152/src.zip!/java/util/ArrayList.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -637,63 +631,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Maquina.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="13" column="47" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Humano.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="15" column="0" lean-forward="false" selection-start-line="15" selection-start-column="0" selection-end-line="15" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/pokesim/tabelaDano.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="11" column="4" lean-forward="false" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="4" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Jogador.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="109" column="29" lean-forward="false" selection-start-line="109" selection-start-column="29" selection-end-line="109" selection-end-column="29" />
-          <folding>
-            <element signature="method#trocarPokemon#0;class#Jogador#0" expanded="false" />
-            <element signature="method#efetivarTroca#0;class#Jogador#0" expanded="false" />
-            <element signature="method#escolherAtaque#0;class#Jogador#0" expanded="false" />
-            <element signature="method#adicionarPokemon#0;class#Jogador#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/tabelaDeAtaques.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="33" column="45" lean-forward="true" selection-start-line="33" selection-start-column="45" selection-end-line="33" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/pokesim/Ataque.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="168" column="0" lean-forward="false" selection-start-line="168" selection-start-column="0" selection-end-line="168" selection-end-column="0" />
-          <folding>
-            <element signature="method#Ataque#0;class#Ataque#0" expanded="false" />
-            <element signature="method#calculoCritico#0;class#Ataque#0" expanded="false" />
-            <element signature="method#tipos_atk#0;class#Ataque#0" expanded="false" />
-            <element signature="method#tipos_spe#0;class#Ataque#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -705,20 +647,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Pokemon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="127">
+          <caret line="129" column="56" lean-forward="false" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
+          <folding>
+            <element signature="method#setHpAtual#0;class#Pokemon#0" expanded="false" />
+            <element signature="method#setModifierAccuracy#0;class#Pokemon#0" expanded="false" />
+            <element signature="method#setModifierEvasion#0;class#Pokemon#0" expanded="false" />
+            <element signature="method#novoAtaque#0;class#Pokemon#0" expanded="false" />
+            <element signature="method#adicionarAtaque#0;class#Pokemon#0" expanded="false" />
+            <element signature="method#getInfoPokemon#0;class#Pokemon#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Humano.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="11" column="33" lean-forward="false" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+          <folding>
+            <element signature="method#escolherComando#0;class#Humano#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Jogador.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="18" column="65" lean-forward="false" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+          <folding>
+            <element signature="method#efetivarTroca#0;class#Jogador#0" expanded="false" />
+            <element signature="method#escolherAtaque#0;class#Jogador#0" expanded="false" />
+            <element signature="method#adicionarPokemon#0;class#Jogador#0" expanded="false" />
+            <element signature="method#usarAtaque#0;class#Jogador#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Maquina.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="29" column="32" lean-forward="false" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="method#escolherAtaque#0;class#Maquina#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/tabelaDeAtaques.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="98">
+          <caret line="68" column="51" lean-forward="true" selection-start-line="68" selection-start-column="51" selection-end-line="68" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/pokesim/AtaqueHP.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
+        <state relative-caret-position="100">
+          <caret line="20" column="29" lean-forward="false" selection-start-line="20" selection-start-column="29" selection-end-line="20" selection-end-column="29" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/pokesim/Ataque.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="124">
+          <caret line="42" column="59" lean-forward="false" selection-start-line="42" selection-start-column="59" selection-end-line="42" selection-end-column="59" />
+          <folding>
+            <element signature="method#Ataque#0;class#Ataque#0" expanded="false" />
+            <element signature="method#efeito#0;class#Ataque#0" expanded="false" />
+            <element signature="method#calculoCritico#0;class#Ataque#0" expanded="false" />
+            <element signature="method#calculoAcerto#0;class#Ataque#0" expanded="false" />
+            <element signature="method#calculoDano#0;class#Ataque#0" expanded="false" />
+            <element signature="method#tipos_atk#0;class#Ataque#0" expanded="false" />
+            <element signature="method#tipos_spe#0;class#Ataque#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/pokesim/Batalha.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="572" column="112" lean-forward="false" selection-start-line="572" selection-start-column="112" selection-end-line="572" selection-end-column="112" />
+        <state relative-caret-position="34">
+          <caret line="5" column="37" lean-forward="false" selection-start-line="5" selection-start-column="37" selection-end-line="5" selection-end-column="37" />
           <folding>
-            <element signature="imports" expanded="true" />
             <element signature="method#carregarTabelas#0;class#Batalha#0" expanded="false" />
             <element signature="method#checarArgumentos#0;class#Batalha#0" expanded="false" />
             <element signature="method#validaCamposArg#0;class#Batalha#0" expanded="false" />
@@ -728,7 +742,11 @@
             <element signature="method#printarTabelaEspecie#0;class#Batalha#0" expanded="false" />
             <element signature="method#printarTabelaAtaque#0;class#Batalha#0" expanded="false" />
             <element signature="method#continuarJogo#0;class#Batalha#0" expanded="false" />
+            <element signature="method#executarTurno#0;class#Batalha#0" expanded="false" />
+            <element signature="method#trocaFainted#0;class#Batalha#0" expanded="false" />
+            <element signature="method#carregaTabelaDano#0;class#Batalha#0" expanded="false" />
             <element signature="method#carregaTabelaAE#0;class#Batalha#0" expanded="false" />
+            <element signature="method#inializaJogManualmente#0;class#Batalha#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -118,11 +118,23 @@ public class Pokemon {
     }
 
     public void setModifierAccuracy(int modifierAccuracy) {
-        this.modifierAccuracy = modifierAccuracy;
+        if (modifierAccuracy < -6){
+            this.modifierAccuracy = -6;
+        } else if (modifierAccuracy > 6) {
+            this.modifierAccuracy = 6;
+        } else {
+            this.modifierAccuracy = modifierAccuracy;
+        }
     }
 
     public void setModifierEvasion(int modifierEvasion) {
-        this.modifierEvasion = modifierEvasion;
+        if (modifierEvasion < -6){
+            this.modifierEvasion = -6;
+        } else if (modifierEvasion > 6) {
+            this.modifierEvasion = 6;
+        } else {
+            this.modifierEvasion = modifierAccuracy;
+        }
     }
 
     public void setModifierAtk(int modifierAtk) {

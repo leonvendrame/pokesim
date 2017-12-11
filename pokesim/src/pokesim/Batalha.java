@@ -4,7 +4,6 @@ import jdk.nashorn.internal.scripts.JO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
@@ -158,7 +157,7 @@ public class Batalha {
 
     public boolean validaCamposArg(int[] args) {
         /*  Verifica se os campos são válidos, seja algum deles igual a 0 então os argumentos não são válidos
-            Só não se aplica ao jogador que pode ser maquina ou humano;
+            Só não se aplica ao jogador que pode ser maquina ou humano, ou caso de não ter algum ataque;
          */
         boolean valido = true;
         int segJogador = ((args[1] * 6) + 2), i = 2;
@@ -169,6 +168,9 @@ public class Batalha {
 
          while (valido && i < segJogador) {
             if (args[i] == 0 || args[i] > tabelaEspecie.length || args[i + 1] == 0){
+                valido = false;
+            }
+            if (args[i + 2] == 0 && args[i + 3] == 0 && args[i + 4] == 0 & args[i + 5] == 0) {
                 valido = false;
             }
             i += 6;
@@ -183,6 +185,9 @@ public class Batalha {
 
             while (valido && segJogador < args.length) {
                 if (args[segJogador] == 0 || args[segJogador] > tabelaEspecie.length || args[segJogador + 1] == 0) {
+                    valido = false;
+                }
+                if (args[segJogador + 2] == 0 && args[segJogador + 3] == 0 && args[segJogador + 4] == 0 & args[segJogador + 5] == 0) {
                     valido = false;
                 }
                 segJogador += 6;
@@ -290,82 +295,7 @@ public class Batalha {
             this.getResumoJogador(jogador0);
 //            System.out.println("-------------------------------------------");
 
-            Scanner opcao = new Scanner(System.in);
-            int entrada, auxId, auxLvl;
-
-            Jogador jogadorIt;
-
-            System.out.printf("\t\t\t Jogador %d\n", 2);
-            System.out.printf("0 - Máquina\n1 - Humano\nEscolha o tipo do jogador: ");
-            if (opcao.nextInt() == 0) {
-                jogadorIt = new Maquina();
-            } else {
-                jogadorIt = new Humano();
-            }
-            System.out.printf("Quantos pokemons o time terá: ");
-            entrada = opcao.nextInt();
-            while (entrada > 6 || entrada < 1) {
-                System.out.println(Main.ANSI_RED + "Você não pode ter mais que 6 pokemons e deve ter pelo menos 1 pokemon." + Main.ANSI_RESET);
-                System.out.printf("Insira novamente a quantidade de pokemons em seu time: ");
-                entrada = opcao.nextInt();
-            }
-            System.out.println("Se você deseja ver a lista com todos os pokemons e status dísponíveis?");
-            System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
-            if (opcao.nextInt() == 1) {
-                printarTabelaEspecie();
-            }
-            for (int k = 0; k < entrada; k++) {
-                System.out.println("Entre com o ID e o level do pokemon separando por espaço. (Ex: 1 10 = ID 1 Level 10)");
-                System.out.printf("Pokemon %d: ", k + 1);
-                auxId = opcao.nextInt();
-                auxLvl = opcao.nextInt();
-                while (auxId > tabelaEspecie.length){
-                    System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
-                    System.out.println("Deseja visualizar a tabela de espécies disponíveis?");
-                    System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
-                    if (opcao.nextInt() == 1){
-                        printarTabelaEspecie();
-                    }
-                    System.out.println("Entre com o ID e o level do pokemon separando por espaço. (Ex: 1 10 = ID 1 Level 10)");
-                    System.out.printf("Pokemon %d: ", k + 1);
-                    auxId = opcao.nextInt();
-                    auxLvl = opcao.nextInt();
-                }
-                Pokemon addPokemon = new Pokemon(auxId, auxLvl);
-
-                System.out.printf("Esocolha a quantidade de ataques deste pokemon: ");
-                int entradaQtde = opcao.nextInt();
-                while (entradaQtde < 0 || entradaQtde > 4) {
-                    System.out.println(Main.ANSI_RED + "Você não pode ter mais que 4 ataques por pokemon." + Main.ANSI_RESET);
-                    System.out.printf("Insira novamente a quantidade de ataques deste pokemon: ");
-                    entradaQtde = opcao.nextInt();
-                }
-                System.out.println("Se você deseja ver a lista com todos os ataques dísponíveis?");
-                System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
-                if (opcao.nextInt() == 1) {
-                    printarTabelaAtaque();
-                }
-                int idAtaque;
-                System.out.println("Entre com o ID dos ataques");
-                for (int n = 0; n < entradaQtde; n++) {
-                    System.out.printf("Ataque %d: ", n + 1);
-                    idAtaque = opcao.nextInt();
-                    while (idAtaque > tabelaAtaque.length) {
-                        System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
-                        System.out.println("Deseja visualizar a tabela de ataques disponíveis?");
-                        System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
-                        if (opcao.nextInt() == 1){
-                            printarTabelaAtaque();
-                        }
-                        System.out.println("Entre com o ID dos ataques");
-                        System.out.printf("Ataque %d: ", n + 1);
-                        idAtaque = opcao.nextInt();
-                    }
-                    addPokemon.novoAtaque(idAtaque);
-                }
-                jogadorIt.adicionarPokemon(addPokemon);
-            }
-            this.jogador1 = jogadorIt;
+            this.jogador1 = inializaJogManualmente(2);
 
             System.out.printf("\n");
 
@@ -381,90 +311,10 @@ public class Batalha {
         if (nJogadores == 0) {
             System.out.printf("Inicializando Jogadores Manualmente\n\n");
 
-            Scanner opcao = new Scanner(System.in);
-            int entrada, auxId, auxLvl;
+            this.jogador0 = inializaJogManualmente(1);
+            System.out.printf("\n");
+            this.jogador1 = inializaJogManualmente(2);
 
-            Jogador jogadorIt;
-
-            for (int i = 0; i < 2; i++) {
-                System.out.printf("\t\t\t Jogador %d\n", i + 1);
-                System.out.printf("0 - Máquina\n1 - Humano\nEscolha o tipo do jogador: ");
-                if (opcao.nextInt() == 0) {
-                    jogadorIt = new Maquina();
-                } else {
-                    jogadorIt = new Humano();
-                }
-                System.out.printf("Quantos pokemons o time terá: ");
-                entrada = opcao.nextInt();
-                while (entrada > 6 || entrada < 1) {
-                    System.out.println(Main.ANSI_RED + "Você não pode ter mais que 6 pokemons e deve ter pelo menos 1 pokemon." + Main.ANSI_RESET);
-                    System.out.printf("Insira novamente a quantidade de pokemons em seu time: ");
-                    entrada = opcao.nextInt();
-                }
-                System.out.println("Se você deseja ver a lista com todos os pokemons e status dísponíveis?");
-                System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
-                if (opcao.nextInt() == 1) {
-                    printarTabelaEspecie();
-                }
-
-                for (int j = 0; j < entrada; j++) {
-                    System.out.println("Entre com o ID e o level do pokemon separando por espaço. (Ex: 1 10 = ID 1 Level 10)");
-                    System.out.printf("Pokemon %d: ", j + 1);
-                    auxId = opcao.nextInt();
-                    auxLvl = opcao.nextInt();
-                    while (auxId > tabelaEspecie.length){
-                        System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
-                        System.out.println("Deseja visualizar a tabela de espécies disponíveis?");
-                        System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
-                        if (opcao.nextInt() == 1){
-                            printarTabelaEspecie();
-                        }
-                        System.out.println("Entre com o ID e o level de cada pokemon separando por espaço. (Ex: 1 10 = ID 1 Level 10)");
-                        System.out.printf("Pokemon %d: ", j + 1);
-                        auxId = opcao.nextInt();
-                        auxLvl = opcao.nextInt();
-                    }
-                    Pokemon addPokemon = new Pokemon(auxId, auxLvl);
-
-                    System.out.printf("Esocolha a quantidade de ataques deste pokemon: ");
-                    int entradaQtde = opcao.nextInt();
-                    while (entradaQtde < 0 || entradaQtde > 4) {
-                        System.out.println(Main.ANSI_RED + "Você não pode ter mais que 4 ataques por pokemon." + Main.ANSI_RESET);
-                        System.out.printf("Insira novamente a quantidade de ataques deste pokemon: ");
-                        entradaQtde = opcao.nextInt();
-                    }
-                    System.out.println("Se você deseja ver a lista com todos os ataques dísponíveis?");
-                    System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
-                    if (opcao.nextInt() == 1) {
-                        printarTabelaAtaque();
-                    }
-                    int idAtaque;
-                    System.out.println("Entre com o ID dos ataques");
-                    for (int n = 0; n < entradaQtde; n++) {
-                        System.out.printf("Ataque %d: ", n + 1);
-                        idAtaque = opcao.nextInt();
-                        while (idAtaque > tabelaAtaque.length) {
-                            System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
-                            System.out.println("Deseja visualizar a tabela de ataques disponíveis?");
-                            System.out.printf("0 - Não\n1 - Sim\nEscolha sua opção: ");
-                            if (opcao.nextInt() == 1){
-                                printarTabelaAtaque();
-                            }
-                            System.out.println("Entre com o ID dos ataques");
-                            System.out.printf("Ataque %d: ", n + 1);
-                            idAtaque = opcao.nextInt();
-                        }
-                        addPokemon.novoAtaque(idAtaque);
-                    }
-                    jogadorIt.adicionarPokemon(addPokemon);
-                }
-                if (i == 0){
-                    this.jogador0 = jogadorIt;
-                } else {
-                    this.jogador1 = jogadorIt;
-                }
-                System.out.printf("\n");
-            }
 //            System.out.println("-------------------------------------------");
             this.getResumoJogador(jogador0);
 //            System.out.println("-------------------------------------------");
@@ -490,7 +340,7 @@ public class Batalha {
             System.out.printf("%-14s LVL %4s %15s\n", pokemon.getEspecie().getNome(), pokemon.getLevel(), pokemon.getStatus().toString());
             List<Ataque> ataquesIt = pokemon.getAtaques();
             for (Ataque atk : ataquesIt) {
-                System.out.printf("ATK %d - %s - %s\n", ataquesIt.indexOf(atk) + 1, atk.getNome(), atk.getClass().toString().substring(14));
+                System.out.printf("ATK %d - %s - %s - %s\n", ataquesIt.indexOf(atk) + 1, atk.getNome(), atk.getTipo(), atk.getClass().toString().substring(14));
             }
             System.out.printf("\n");
         }
@@ -586,15 +436,15 @@ public class Batalha {
                 getJogador0().usarAtaque(atkJogador0, getJogador1());
             }
             if (escolhaJogador1 == 1 && atkJogador1 != -1 && getJogador1().getTime().get(0).getStatus() != Status.FAINTED) {
-                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
                 getJogador1().usarAtaque(atkJogador1, getJogador0());
             } else if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
-                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
                 trocaFainted(getJogador1());
             }
         } else if (getJogador0().getTime().get(0).valorAtributo(Atributo.SPD) < getJogador1().getTime().get(0).valorAtributo(Atributo.SPD)) {
             if (escolhaJogador1 == 1 && atkJogador1 != -1) {
-                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
                 getJogador1().usarAtaque(atkJogador1, getJogador0());
             }
             if (escolhaJogador0 == 1 && atkJogador0 != -1 && getJogador0().getTime().get(0).getStatus() != Status.FAINTED) {
@@ -608,7 +458,7 @@ public class Batalha {
             Random random = new Random();
             if (random.nextInt(2) == 1) {
                 if (escolhaJogador1 == 1 && atkJogador1 != -1) {
-                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
                     getJogador1().usarAtaque(atkJogador1, getJogador0());
                 }
                 if (escolhaJogador0 == 1 && atkJogador0 != -1 && getJogador0().getTime().get(0).getStatus() != Status.FAINTED) {
@@ -624,10 +474,10 @@ public class Batalha {
                     getJogador0().usarAtaque(atkJogador0, getJogador1());
                 }
                 if (escolhaJogador1 == 1 && atkJogador1 != -1 && getJogador1().getTime().get(0).getStatus() != Status.FAINTED) {
-                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
                     getJogador1().usarAtaque(atkJogador1, getJogador0());
                 } else if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
-                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
                     trocaFainted(getJogador1());
                 }
             }
@@ -733,5 +583,94 @@ public class Batalha {
 
     public void setVencedorId(int vencedorId) {
         this.vencedorId = vencedorId;
+    }
+
+    public Jogador inializaJogManualmente(int id) {
+        Scanner opcao = new Scanner(System.in);
+        int entrada, auxId, auxLvl;
+        Jogador jogadorIt;
+
+        System.out.printf(Main.ANSI_BLUE + "\t\t\t Jogador %d\n" + Main.ANSI_RESET, id);
+        System.out.printf("1 - Máquina\n2 - Humano\nEscolha o tipo do jogador: ");
+        entrada = opcao.nextInt();
+        while (entrada != 1 && entrada != 2) {
+            System.out.printf(Main.ANSI_RED + "Valor inválido.\n" + Main.ANSI_RESET);
+            System.out.printf("Esoolha novamente: ");
+            entrada = opcao.nextInt();
+        }
+        if (entrada == 1) {
+            jogadorIt = new Maquina();
+        } else {
+            jogadorIt = new Humano();
+        }
+        System.out.printf("Quantos pokemons o time terá: ");
+        entrada = opcao.nextInt();
+        while (entrada > 6 || entrada < 1) {
+            System.out.println(Main.ANSI_RED + "Você não pode ter mais que 6 pokemons e deve ter pelo menos 1 pokemon." + Main.ANSI_RESET);
+            System.out.printf("Insira novamente a quantidade de pokemons em seu time: ");
+            entrada = opcao.nextInt();
+        }
+        System.out.println("Se você deseja ver a lista com todos os pokemons e status dísponíveis?");
+        System.out.printf("1 - Não\n2 - Sim\nEscolha sua opção: ");
+        if (opcao.nextInt() == 2) {
+            printarTabelaEspecie();
+        }
+        for (int k = 0; k < entrada; k++) {
+            System.out.println("Entre com o ID e o level do pokemon separando por espaço. (Ex: 1 10 = ID 1 Level 10)");
+            System.out.printf("Pokemon %d: ", k + 1);
+            auxId = opcao.nextInt();
+            auxLvl = opcao.nextInt();
+            while (auxId > tabelaEspecie.length || auxId < 1 || auxLvl < 1) {
+                if (auxId > tabelaEspecie.length || auxId < 1) {
+                    System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
+                }
+                if (auxLvl < 1) {
+                    System.out.println(Main.ANSI_RED + "O LVL escolhido é inválido." + Main.ANSI_RESET);
+                }
+                System.out.println("Deseja visualizar a tabela de espécies disponíveis?");
+                System.out.printf("1 - Não\n2 - Sim\nEscolha sua opção: ");
+                if (opcao.nextInt() == 2) {
+                    printarTabelaEspecie();
+                }
+                System.out.println("Entre com o ID e o level do pokemon separando por espaço. (Ex: 1 10 = ID 1 Level 10)");
+                System.out.printf("Pokemon %d: ", k + 1);
+                auxId = opcao.nextInt();
+                auxLvl = opcao.nextInt();
+            }
+            Pokemon addPokemon = new Pokemon(auxId, auxLvl);
+
+            System.out.printf("Esocolha a quantidade de ataques deste pokemon: ");
+            int entradaQtde = opcao.nextInt();
+            while (entradaQtde < 1 || entradaQtde > 4) {
+                System.out.println(Main.ANSI_RED + "Você não pode ter mais que 4 ataques por pokemon e deve ter pelo menso 1 ataque." + Main.ANSI_RESET);
+                System.out.printf("Insira novamente a quantidade de ataques deste pokemon: ");
+                entradaQtde = opcao.nextInt();
+            }
+            System.out.println("Se você deseja ver a lista com todos os ataques dísponíveis?");
+            System.out.printf("1 - Não\n2 - Sim\nEscolha sua opção: ");
+            if (opcao.nextInt() == 2) {
+                printarTabelaAtaque();
+            }
+            int idAtaque;
+            System.out.println("Entre com o ID dos ataques:");
+            for (int n = 0; n < entradaQtde; n++) {
+                System.out.printf("Ataque %d: ", n + 1);
+                idAtaque = opcao.nextInt();
+                while (idAtaque > tabelaAtaque.length || idAtaque < 1) {
+                    System.out.println(Main.ANSI_RED + "O ID escolhido é inválido." + Main.ANSI_RESET);
+                    System.out.println("Deseja visualizar a tabela de ataques disponíveis?");
+                    System.out.printf("1 - Não\n2 - Sim\nEscolha sua opção: ");
+                    if (opcao.nextInt() == 2) {
+                        printarTabelaAtaque();
+                    }
+                    System.out.println("Entre com o ID dos ataques:");
+                    System.out.printf("Ataque %d: ", n + 1);
+                    idAtaque = opcao.nextInt();
+                }
+                addPokemon.novoAtaque(idAtaque);
+            }
+            jogadorIt.adicionarPokemon(addPokemon);
+        }
+        return jogadorIt;
     }
 }
