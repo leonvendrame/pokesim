@@ -22,15 +22,15 @@ public class Main {
 
         pokeBatalha.inicializarJogadores(argsInt);
 
-//        pokeBatalha.getJogador1().getTime().get(0).setStatus(Status.FAINTED);
+        while (pokeBatalha.continuarJogo()) {
+            pokeBatalha.executarTurno();
+        }
 
-//        pokeBatalha.getJogador1().trocarPokemon();
-
-//        pokeBatalha.getJogador0().getTime().get(0).getAtaques().get(0).efeito(pokeBatalha.getJogador0().getTime().get(0), pokeBatalha.getJogador1().getTime().get(0));
-
-        pokeBatalha.executarTurno();
-
-        pokeBatalha.getResumoJogador(pokeBatalha.getJogador1());
+        if (pokeBatalha.getVencedorId() == -1) {
+            System.out.println(ANSI_BLUE + "O jogo terminou empatado!" + ANSI_RESET);
+        } else {
+            System.out.printf(ANSI_BLUE + "\t\tParabéns Jogador %d!\n\t\tVocê venceu!" + ANSI_RESET, pokeBatalha.getVencedorId());
+        }
     }
 
     public static final String ANSI_RESET = "\u001B[0m";

@@ -15,11 +15,11 @@ public abstract class Jogador {
 
     public abstract int escolherComando();
 
-    public void trocarPokemon() {
+    public int trocarPokemon() {
         System.out.println("Lista de opções de troca dísponíveis:\n");
         for (Pokemon pokemon : getTime()) {
             if (pokemon.getStatus() != Status.FAINTED) {
-                System.out.printf(Main.ANSI_GREEN + "%s - %s (HP: %s | %s)\n" + Main.ANSI_RESET, getTime().indexOf(pokemon), pokemon.getEspecie().getNome().toString(),
+                System.out.printf(Main.ANSI_GREEN + "%s - %s (HP: %s | %s)\n" + Main.ANSI_RESET, getTime().indexOf(pokemon) + 1, pokemon.getEspecie().getNome().toString(),
                                         pokemon.valorAtributo(Atributo.HPATUAL), pokemon.valorAtributo(Atributo.HPMAX));
             } else {
                 System.out.printf(Main.ANSI_RED + "✖ %s - FAINTED (HP: %s | %s) ✖\n" + Main.ANSI_RESET, pokemon.getEspecie().getNome().toString(),
@@ -30,24 +30,31 @@ public abstract class Jogador {
         Scanner scanner = new Scanner(System.in);
         System.out.printf("\nEscolha sua opção: ");
         int opcao = scanner.nextInt();
+        opcao--;
 
         while (opcao >= getTime().size() || opcao < 0 || getTime().get(opcao).getStatus() == Status.FAINTED) {
             if (opcao >= getTime().size() || opcao < 0) {
-                System.out.println("Erro, a opção desejada não está dísponível");
+                System.out.println(Main.ANSI_RED + "Erro, a opção desejada não está dísponível" + Main.ANSI_RESET);
             } else {
                 System.out.println("Você não pode trocar um pokemon com status FAINTED");
             }
             System.out.printf("Escolha sua opção: ");
             opcao = scanner.nextInt();
+            opcao--;
         }
+
+        System.out.printf("\n");
+
+        return opcao;
+    }
+
+    public void efetivarTroca(int opcao) {
         if (getTime().get(opcao).getStatus() != Status.FAINTED) {
             Pokemon troca = getTime().get(0);
             getTime().set(0, getTime().get(opcao));
             getTime().set(opcao, troca);
-            System.out.printf(Main.ANSI_GREEN + "Troca efeutada com sucesso.\n" + Main.ANSI_RESET + "Seu pokemon atacante atual é %s.", getTime().get(0).getEspecie().getNome());
+            System.out.printf(Main.ANSI_GREEN + "Troca efeutada com sucesso.\n" + Main.ANSI_RESET + "Seu pokemon atual é %s.\n\n", getTime().get(0).getEspecie().getNome());
         }
-
-        return;
     }
 
     public int escolherAtaque() {
@@ -73,6 +80,7 @@ public abstract class Jogador {
             opcao = scanner.nextInt();
             opcao--;
         }
+        System.out.printf("\n");
 
         return opcao;
     }
@@ -101,21 +109,27 @@ public abstract class Jogador {
         atacante.getAtaques().get(ataqueEscolha).efeito(atacante, defensor);
 
         if (atacante.getStatus() == Status.FAINTED) {
-            Pokemon troca = atacante;
-            int i = 0;
-            for (Pokemon pokemon : getTime()) {
-                getTime().set(i, getTime().get(++i));
+            System.out.printf("%s foi derrotado\n", atacante.getEspecie().getNome());
+            if (getTime().size() > 1) {
+                Pokemon troca = atacante;
+                int i = 0;
+                while (i + 1 < getTime().size()) {
+                    getTime().set(i, getTime().get(++i));
+                }
+                getTime().set(i, troca);
             }
-            getTime().set(i, troca);
         }
 
         if (defensor.getStatus() == Status.FAINTED) {
-            Pokemon troca = defensor;
-            int i = 0;
-            while (i + 1 < oponente.getTime().size()) {
-                oponente.getTime().set(i, oponente.getTime().get(++i));
+            System.out.printf("%s foi derrotado\n", defensor.getEspecie().getNome());
+            if (oponente.getTime().size() > 1) {
+                Pokemon troca = defensor;
+                int i = 0;
+                while (i + 1 < oponente.getTime().size()) {
+                    oponente.getTime().set(i, oponente.getTime().get(++i));
+                }
+                oponente.getTime().set(i, troca);
             }
-            oponente.getTime().set(i, troca);
         }
         return;
     }

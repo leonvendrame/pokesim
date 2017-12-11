@@ -6,6 +6,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Batalha {
@@ -15,6 +16,11 @@ public class Batalha {
     private static String[][] tabelaAtaque;
     private static String[][] tabelaDano;
     private static int[][] tabelaAE;
+    private int vencedorId;
+
+    Batalha() {
+        setVencedorId(-1);
+    }
 
     public static void carregarTabelas() {
         int countLinhasEspecie = 0;
@@ -526,40 +532,88 @@ public class Batalha {
                 pokemonJog1 = true;
             }
         }
+
+        if (!pokemonJog0 && pokemonJog1) {
+            setVencedorId(2);
+        } else if (pokemonJog0 && !pokemonJog1) {
+            setVencedorId(1);
+        }
+
         return (pokemonJog0 && pokemonJog1);
     }
 
     public void executarTurno() {
         int escolhaJogador0, escolhaJogador1;
         int atkJogador0 = -1, atkJogador1 = -1;
-        int trocaJogador0, trocaJogador1;
+        int trocaJogador0 = -1, trocaJogador1 = -1;
 
+        System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
         escolhaJogador0 = getJogador0().escolherComando();
+        if (escolhaJogador0 == 1) {
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+            atkJogador0 = getJogador0().escolherAtaque();
+        } else if (escolhaJogador0 == 2){
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+            trocaJogador0 = getJogador0().trocarPokemon();
+        }
+
+        System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
         escolhaJogador1 = getJogador1().escolherComando();
 
-        if (escolhaJogador0 == 1) {
-            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, 1);
-            atkJogador0 = getJogador0().escolherAtaque();
-        } else {
-            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, 1);
-            getJogador0().trocarPokemon();
-        }
-
-        System.out.println("\n");
-
         if (escolhaJogador1 == 1) {
-            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, 2);
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
             atkJogador1 = getJogador1().escolherAtaque();
-        } else {
-            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador %d\n\n" + Main.ANSI_RESET, 2);
-            getJogador1().trocarPokemon();
+        } else if (escolhaJogador1 == 2){
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
+            trocaJogador1 = getJogador1().trocarPokemon();
         }
 
         System.out.println("\n");
 
-        getJogador0().usarAtaque(atkJogador0, getJogador1());
-        getJogador1().usarAtaque(atkJogador1, getJogador0());
+        System.out.println("============= Executando Turno =============\n");
 
+        if (escolhaJogador0 == 2 && trocaJogador0 != -1) {
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+            getJogador0().efetivarTroca(trocaJogador0);
+        } else if (escolhaJogador1 == 2 && trocaJogador1 != -1) {
+            System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+            getJogador1().efetivarTroca(trocaJogador1);
+        }
+
+        if (getJogador0().getTime().get(0).valorAtributo(Atributo.SPD) >= getJogador1().getTime().get(0).valorAtributo(Atributo.SPD)) {
+            if (escolhaJogador0 == 1 && atkJogador0 != -1) {
+                getJogador0().usarAtaque(atkJogador0, getJogador1());
+            }
+            if (escolhaJogador1 == 1 && atkJogador1 != -1 && getJogador1().getTime().get(0).getStatus() != Status.FAINTED) {
+                getJogador1().usarAtaque(atkJogador1, getJogador0());
+            }
+        } else if (getJogador0().getTime().get(0).valorAtributo(Atributo.SPD) < getJogador1().getTime().get(0).valorAtributo(Atributo.SPD)) {
+            if (escolhaJogador1 == 1 && atkJogador1 != -1) {
+                getJogador1().usarAtaque(atkJogador1, getJogador0());
+            }
+            if (escolhaJogador0 == 1 && atkJogador0 != -1 && getJogador0().getTime().get(0).getStatus() != Status.FAINTED) {
+                getJogador0().usarAtaque(atkJogador0, getJogador1());
+            }
+        } else {
+            Random random = new Random();
+            if (random.nextInt(2) == 1) {
+                if (escolhaJogador1 == 1 && atkJogador1 != -1) {
+                    getJogador1().usarAtaque(atkJogador1, getJogador0());
+                }
+                if (escolhaJogador0 == 1 && atkJogador0 != -1 && getJogador0().getTime().get(0).getStatus() != Status.FAINTED) {
+                    getJogador0().usarAtaque(atkJogador0, getJogador1());
+                }
+            } else {
+                if (escolhaJogador0 == 1 && atkJogador0 != -1) {
+                    getJogador0().usarAtaque(atkJogador0, getJogador1());
+                }
+                if (escolhaJogador1 == 1 && atkJogador1 != -1 && getJogador1().getTime().get(0).getStatus() != Status.FAINTED) {
+                    getJogador1().usarAtaque(atkJogador1, getJogador0());
+                }
+            }
+        }
+
+        System.out.println("============================================\n");
 
         return;
     }
@@ -636,5 +690,13 @@ public class Batalha {
 
     public static int[][] getTabelaAE() {
         return tabelaAE;
+    }
+
+    public int getVencedorId() {
+        return this.vencedorId;
+    }
+
+    public void setVencedorId(int vencedorId) {
+        this.vencedorId = vencedorId;
     }
 }

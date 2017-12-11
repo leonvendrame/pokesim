@@ -47,6 +47,7 @@ public class Ataque {
         } else {
             double dano = calculoDano(atacante, defensor);
             defensor.setHpAtual(defensor.valorAtributo(Atributo.HPATUAL) - dano);
+            System.out.printf("%s causou %.2f de dano em %s\n",atacante.getEspecie().getNome(), dano, defensor.getEspecie().getNome());
         }
         return;
     }
