@@ -107,30 +107,7 @@ public abstract class Jogador {
         defensor = oponente.getTime().get(0);
 
         atacante.getAtaques().get(ataqueEscolha).efeito(atacante, defensor);
-
-        if (atacante.getStatus() == Status.FAINTED) {
-            System.out.printf("%s foi derrotado\n", atacante.getEspecie().getNome());
-            if (getTime().size() > 1) {
-                Pokemon troca = atacante;
-                int i = 0;
-                while (i + 1 < getTime().size()) {
-                    getTime().set(i, getTime().get(++i));
-                }
-                getTime().set(i, troca);
-            }
-        }
-
-        if (defensor.getStatus() == Status.FAINTED) {
-            System.out.printf("%s foi derrotado\n", defensor.getEspecie().getNome());
-            if (oponente.getTime().size() > 1) {
-                Pokemon troca = defensor;
-                int i = 0;
-                while (i + 1 < oponente.getTime().size()) {
-                    oponente.getTime().set(i, oponente.getTime().get(++i));
-                }
-                oponente.getTime().set(i, troca);
-            }
-        }
+        System.out.printf("\n");
         return;
     }
 }

@@ -490,7 +490,7 @@ public class Batalha {
             System.out.printf("%-14s LVL %4s %15s\n", pokemon.getEspecie().getNome(), pokemon.getLevel(), pokemon.getStatus().toString());
             List<Ataque> ataquesIt = pokemon.getAtaques();
             for (Ataque atk : ataquesIt) {
-                System.out.printf("ATK[%d] - %s - %s\n", ataquesIt.indexOf(atk), atk.getNome(), atk.getClass());
+                System.out.printf("ATK %d - %s - %s\n", ataquesIt.indexOf(atk) + 1, atk.getNome(), atk.getClass().toString().substring(14));
             }
             System.out.printf("\n");
         }
@@ -570,7 +570,7 @@ public class Batalha {
 
         System.out.println("\n");
 
-        System.out.println("============= Executando Turno =============\n");
+        System.out.println(Main.ANSI_YELLOW + "============= Executando Turno =============\n" + Main.ANSI_RESET);
 
         if (escolhaJogador0 == 2 && trocaJogador0 != -1) {
             System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
@@ -582,40 +582,75 @@ public class Batalha {
 
         if (getJogador0().getTime().get(0).valorAtributo(Atributo.SPD) >= getJogador1().getTime().get(0).valorAtributo(Atributo.SPD)) {
             if (escolhaJogador0 == 1 && atkJogador0 != -1) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                 getJogador0().usarAtaque(atkJogador0, getJogador1());
             }
             if (escolhaJogador1 == 1 && atkJogador1 != -1 && getJogador1().getTime().get(0).getStatus() != Status.FAINTED) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                 getJogador1().usarAtaque(atkJogador1, getJogador0());
+            } else if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                trocaFainted(getJogador1());
             }
         } else if (getJogador0().getTime().get(0).valorAtributo(Atributo.SPD) < getJogador1().getTime().get(0).valorAtributo(Atributo.SPD)) {
             if (escolhaJogador1 == 1 && atkJogador1 != -1) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                 getJogador1().usarAtaque(atkJogador1, getJogador0());
             }
             if (escolhaJogador0 == 1 && atkJogador0 != -1 && getJogador0().getTime().get(0).getStatus() != Status.FAINTED) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                 getJogador0().usarAtaque(atkJogador0, getJogador1());
+            } else if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                trocaFainted(getJogador0());
             }
         } else {
             Random random = new Random();
             if (random.nextInt(2) == 1) {
                 if (escolhaJogador1 == 1 && atkJogador1 != -1) {
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                     getJogador1().usarAtaque(atkJogador1, getJogador0());
                 }
                 if (escolhaJogador0 == 1 && atkJogador0 != -1 && getJogador0().getTime().get(0).getStatus() != Status.FAINTED) {
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                     getJogador0().usarAtaque(atkJogador0, getJogador1());
+                } else if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                    trocaFainted(getJogador0());
                 }
             } else {
                 if (escolhaJogador0 == 1 && atkJogador0 != -1) {
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                     getJogador0().usarAtaque(atkJogador0, getJogador1());
                 }
                 if (escolhaJogador1 == 1 && atkJogador1 != -1 && getJogador1().getTime().get(0).getStatus() != Status.FAINTED) {
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                     getJogador1().usarAtaque(atkJogador1, getJogador0());
+                } else if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                    trocaFainted(getJogador1());
                 }
             }
         }
 
-        System.out.println("============================================\n");
+        System.out.println(Main.ANSI_YELLOW + "============================================\n" + Main.ANSI_RESET);
 
         return;
+    }
+
+    public void trocaFainted(Jogador jogador) {
+        System.out.printf("%s foi derrotado\n", jogador.getTime().get(0).getEspecie().getNome());
+        if (jogador.getTime().size() > 1) {
+            if (jogador.getTime().get(1).getStatus() != Status.FAINTED) {
+                System.out.printf("Seu novo pokemon é: %s\n\n", jogador.getTime().get(1).getEspecie().getNome());
+            }
+            Pokemon troca = jogador.getTime().get(0);
+            int i = 0;
+            while (i + 1 < jogador.getTime().size()) {
+                jogador.getTime().set(i, jogador.getTime().get(++i));
+            }
+            jogador.getTime().set(i, troca);
+        }
     }
 
     public static void carregaTabelaDano() {

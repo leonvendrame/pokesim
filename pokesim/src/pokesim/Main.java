@@ -29,7 +29,7 @@ public class Main {
         if (pokeBatalha.getVencedorId() == -1) {
             System.out.println(ANSI_BLUE + "O jogo terminou empatado!" + ANSI_RESET);
         } else {
-            System.out.printf(ANSI_BLUE + "\t\tParabéns Jogador %d!\n\t\tVocê venceu!" + ANSI_RESET, pokeBatalha.getVencedorId());
+            System.out.printf(ANSI_BLUE + "\t\tO vencedor foi o Jogador %d" + ANSI_RESET, pokeBatalha.getVencedorId());
         }
     }
 
@@ -37,4 +37,5 @@ public class Main {
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_GREEN = "\u001B[32m";
     public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
 }
