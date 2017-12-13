@@ -4,9 +4,11 @@ import jdk.nashorn.internal.scripts.JO;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.sql.Time;
 import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Batalha {
     private Jogador jogador0 = null;
@@ -396,6 +398,8 @@ public class Batalha {
         int escolhaJogador0, escolhaJogador1;
         int atkJogador0 = -1, atkJogador1 = -1;
         int trocaJogador0 = -1, trocaJogador1 = -1;
+        int chanceCuraStatus;
+        Random curaStatus = new Random();
 
         System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
         escolhaJogador0 = getJogador0().escolherComando();
@@ -418,9 +422,7 @@ public class Batalha {
             trocaJogador1 = getJogador1().trocarPokemon();
         }
 
-        System.out.println("\n");
-
-        System.out.println(Main.ANSI_YELLOW + "============= Executando Turno =============\n" + Main.ANSI_RESET);
+        System.out.println(Main.ANSI_YELLOW + "\n============= Executando Turno =============\n" + Main.ANSI_RESET);
 
         if (escolhaJogador0 == 2 && trocaJogador0 != -1) {
             System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
@@ -442,6 +444,9 @@ public class Batalha {
                 System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
                 trocaFainted(getJogador1());
             }
+            if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
+                trocaFainted(getJogador0());
+            }
         } else if (getJogador0().getTime().get(0).valorAtributo(Atributo.SPD) < getJogador1().getTime().get(0).valorAtributo(Atributo.SPD)) {
             if (escolhaJogador1 == 1 && atkJogador1 != -1) {
                 System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
@@ -453,6 +458,9 @@ public class Batalha {
             } else if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
                 System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                 trocaFainted(getJogador0());
+            }
+            if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
+                trocaFainted(getJogador1());
             }
         } else {
             Random random = new Random();
@@ -468,6 +476,9 @@ public class Batalha {
                     System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                     trocaFainted(getJogador0());
                 }
+                if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
+                    trocaFainted(getJogador1());
+                }
             } else {
                 if (escolhaJogador0 == 1 && atkJogador0 != -1) {
                     System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
@@ -480,16 +491,112 @@ public class Batalha {
                     System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
                     trocaFainted(getJogador1());
                 }
+                if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
+                    trocaFainted(getJogador0());
+                }
+            }
+            System.out.printf("\n");
+        }
+
+        if (getJogador0().getTime().get(0).getStatus() == Status.BURN || getJogador0().getTime().get(0).getStatus() == Status.POISON ||
+                getJogador1().getTime().get(0).getStatus() == Status.BURN || getJogador1().getTime().get(0).getStatus() == Status.POISON) {
+//            System.out.printf(Main.ANSI_YELLOW + "--------------------------------------------\n\n" + Main.ANSI_RESET);
+            if (getJogador0().getTime().get(0).getStatus() == Status.BURN) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                getJogador0().buning();
+                if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
+                    System.out.printf("%s foi derrotado.\n", getJogador0().getTime().get(0).getEspecie().getNome());
+                    trocaFainted(getJogador0());
+                }
+                System.out.printf("\n");
+            } else if (getJogador0().getTime().get(0).getStatus() == Status.POISON) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
+                getJogador0().poisoned();
+                if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
+                    System.out.printf("%s foi derrotado.\n", getJogador0().getTime().get(0).getEspecie().getNome());
+                    trocaFainted(getJogador0());
+                }
+                System.out.printf("\n");
+            }
+            if (getJogador1().getTime().get(0).getStatus() == Status.BURN) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
+                getJogador1().buning();
+                if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
+                    System.out.printf("%s foi derrotado.\n", getJogador1().getTime().get(0).getEspecie().getNome());
+                    trocaFainted(getJogador1());
+                }
+                System.out.printf("\n");
+            } else if (getJogador1().getTime().get(0).getStatus() == Status.POISON) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador1().getClass().toString().substring(14));
+                getJogador1().poisoned();
+                if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
+                    System.out.printf("%s foi derrotado.\n", getJogador1().getTime().get(0).getEspecie().getNome());
+                    trocaFainted(getJogador1());
+                }
+                System.out.printf("\n");
+            }
+        }
+        System.out.println(Main.ANSI_YELLOW + "============================================\n" + Main.ANSI_RESET);
+
+        //Cura Status
+        if (getJogador0().getTime().get(0).isFlinch()) {
+            getJogador0().getTime().get(0).setFlinch(false);
+        }
+        if (getJogador1().getTime().get(0).isFlinch()) {
+            getJogador1().getTime().get(0).setFlinch(false);
+        }
+
+        if (getJogador0().getTime().get(0).isConfusion()) {
+            chanceCuraStatus = curaStatus.nextInt(101);
+            if (chanceCuraStatus <= 20) {
+                getJogador0().getTime().get(0).setConfusion(false);
+            }
+        }
+        if (getJogador1().getTime().get(0).isConfusion()) {
+            chanceCuraStatus = curaStatus.nextInt(101);
+            if (chanceCuraStatus <= 20) {
+                getJogador1().getTime().get(0).setConfusion(false);
             }
         }
 
-        System.out.println(Main.ANSI_YELLOW + "============================================\n" + Main.ANSI_RESET);
+        if (getJogador0().getTime().get(0).getStatus() == Status.SLEEP) {
+            chanceCuraStatus = curaStatus.nextInt(101);
+            if (chanceCuraStatus <= 20) {
+                getJogador0().getTime().get(0).setStatus(Status.OK);
+            }
+        }
 
+        if (getJogador1().getTime().get(0).getStatus() == Status.SLEEP) {
+            chanceCuraStatus = curaStatus.nextInt(101);
+            if (chanceCuraStatus <= 20) {
+                getJogador1().getTime().get(0).setStatus(Status.OK);
+            }
+        }
+
+        if (getJogador0().getTime().get(0).getStatus() == Status.FROZEN) {
+            chanceCuraStatus = curaStatus.nextInt(101);
+            if (chanceCuraStatus <= 10) {
+                getJogador0().getTime().get(0).setStatus(Status.OK);
+            }
+        }
+
+        if (getJogador1().getTime().get(0).getStatus() == Status.FROZEN) {
+            chanceCuraStatus = curaStatus.nextInt(101);
+            if (chanceCuraStatus <= 10) {
+                getJogador1().getTime().get(0).setStatus(Status.OK);
+            }
+        }
+
+        try {
+            TimeUnit.SECONDS.sleep(3);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return;
     }
 
     public void trocaFainted(Jogador jogador) {
-        System.out.printf("%s foi derrotado\n", jogador.getTime().get(0).getEspecie().getNome());
+//        System.out.printf("%s foi derrotado\n", jogador.getTime().get(0).getEspecie().getNome());
         if (jogador.getTime().size() > 1) {
             if (jogador.getTime().get(1).getStatus() != Status.FAINTED) {
                 System.out.printf("Seu novo pokemon é: %s\n\n", jogador.getTime().get(1).getEspecie().getNome());

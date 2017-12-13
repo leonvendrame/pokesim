@@ -33,7 +33,7 @@ public class Maquina extends Jogador {
             System.out.printf("%d - %s - %s\n", getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome(), ataque.getTipo());
         }
         System.out.printf("Entre com sua escolha: ");
-        System.out.printf(Main.ANSI_BLUE + "Escolhendo... \n\n" + Main.ANSI_RESET);
+        System.out.printf(Main.ANSI_BLUE + "Escolhendo... \n" + Main.ANSI_RESET);
 
         try {
             TimeUnit.SECONDS.sleep(2);

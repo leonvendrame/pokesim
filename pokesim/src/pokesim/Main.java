@@ -22,6 +22,9 @@ public class Main {
 
         pokeBatalha.inicializarJogadores(argsInt);
 
+        pokeBatalha.getJogador0().getTime().get(0).setStatus(Status.BURN);
+        pokeBatalha.getJogador1().getTime().get(0).setStatus(Status.POISON);
+
         while (pokeBatalha.continuarJogo()) {
             pokeBatalha.executarTurno();
         }
@@ -29,7 +32,7 @@ public class Main {
         if (pokeBatalha.getVencedorId() == -1) {
             System.out.println(ANSI_BLUE + "O jogo terminou empatado!" + ANSI_RESET);
         } else {
-            System.out.printf(ANSI_BLUE + "\t\tO vencedor foi o Jogador %d" + ANSI_RESET, pokeBatalha.getVencedorId());
+            System.out.printf(ANSI_BLUE + "\t\tO vencedor foi o Jogador %d!\n\n" + ANSI_RESET, pokeBatalha.getVencedorId());
         }
     }
 

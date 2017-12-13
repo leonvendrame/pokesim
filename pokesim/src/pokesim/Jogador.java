@@ -110,4 +110,14 @@ public abstract class Jogador {
         System.out.printf("\n");
         return;
     }
+
+    public void buning() {
+        getTime().get(0).setHpAtual(getTime().get(0).valorAtributo(Atributo.HPATUAL) - (0.0625 * getTime().get(0).valorAtributo(Atributo.HPMAX)));
+        System.out.printf("%s tomou %.2f de dano por estar queimando.\n", getTime().get(0).getEspecie().getNome(), 0.0625 * getTime().get(0).valorAtributo(Atributo.HPMAX));
+    }
+
+    public void poisoned() {
+        getTime().get(0).setHpAtual(getTime().get(0).valorAtributo(Atributo.HPATUAL) - (0.0625 * getTime().get(0).valorAtributo(Atributo.HPMAX)));
+        System.out.printf("%s tomou %.2f de dano por estar envenenado.\n", getTime().get(0).getEspecie().getNome(), 0.0625 * getTime().get(0).valorAtributo(Atributo.HPMAX));
+    }
 }

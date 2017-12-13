@@ -5,7 +5,7 @@ public enum Status {
     FAINTED,
     BURN,
     FROZEN,
-    PARALISYS,
+    PARALYSIS,
     POISON,
     SLEEP,
     CONFUSION,

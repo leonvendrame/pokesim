@@ -50,16 +50,16 @@ public class Pokemon {
     public double valorAtributo(Atributo atributo) {
         switch (atributo) {
             case ATK:
-                return ((this.atk) * (Math.max(2, 2 + modifierAtk) / Math.max(2, 2 - modifierAtk)));
+                return ((this.atk) * (Math.max(2, 2 + getModifierAtk()) / Math.max(2, 2 - getModifierAtk())));
 
             case DEF:
-                return ((this.def) * (Math.max(2, 2 + modifierDef) / Math.max(2, 2 - modifierDef)));
+                return ((this.def) * (Math.max(2, 2 + getModifierDef()) / Math.max(2, 2 - getModifierDef())));
 
             case SPE:
-                return ((this.spe) * (Math.max(2, 2 + modifierSpe) / Math.max(2, 2 - modifierSpe)));
+                return ((this.spe) * (Math.max(2, 2 + getModifierSpe()) / Math.max(2, 2 - getModifierSpe())));
 
             case SPD:
-                return ((this.spd) * (Math.max(2, 2 + modifierSpd) / Math.max(2, 2 - modifierSpd)));
+                return ((this.spd) * (Math.max(2, 2 + getModifierSpd()) / Math.max(2, 2 - getModifierSpd())));
 
             case HPMAX:
                 return this.hpMax;
@@ -133,24 +133,48 @@ public class Pokemon {
         } else if (modifierEvasion > 6) {
             this.modifierEvasion = 6;
         } else {
-            this.modifierEvasion = modifierAccuracy;
+            this.modifierEvasion = modifierEvasion;
         }
     }
 
     public void setModifierAtk(int modifierAtk) {
-        this.modifierAtk = modifierAtk;
+        if (modifierAtk < -6){
+            this.modifierAtk = -6;
+        } else if (modifierAtk > 6) {
+            this.modifierAtk = 6;
+        } else {
+            this.modifierAtk = modifierAtk;
+        }
     }
 
     public void setModifierDef(int modifierDef) {
-        this.modifierDef = modifierDef;
+        if (modifierDef < -6){
+            this.modifierDef = -6;
+        } else if (modifierDef > 6) {
+            this.modifierDef = 6;
+        } else {
+            this.modifierDef = modifierDef;
+        }
     }
 
     public void setModifierSpe(int modifierSpe) {
-        this.modifierSpe = modifierSpe;
+        if (modifierSpe < -6){
+            this.modifierSpe = -6;
+        } else if (modifierSpe > 6) {
+            this.modifierSpe = 6;
+        } else {
+            this.modifierSpe = modifierSpe;
+        }
     }
 
     public void setModifierSpd(int modifierSpd) {
-        this.modifierSpd = modifierSpd;
+        if (modifierSpd < -6){
+            this.modifierSpd = -6;
+        } else if (modifierSpd > 6) {
+            this.modifierSpd = 6;
+        } else {
+            this.modifierSpd = modifierSpd;
+        }
     }
 
     public boolean isConfusion() {
