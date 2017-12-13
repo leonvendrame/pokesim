@@ -22,9 +22,6 @@ public class Main {
 
         pokeBatalha.inicializarJogadores(argsInt);
 
-        pokeBatalha.getJogador0().getTime().get(0).setStatus(Status.BURN);
-        pokeBatalha.getJogador1().getTime().get(0).setStatus(Status.POISON);
-
         while (pokeBatalha.continuarJogo()) {
             pokeBatalha.executarTurno();
         }

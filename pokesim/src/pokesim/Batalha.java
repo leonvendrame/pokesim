@@ -445,6 +445,7 @@ public class Batalha {
                 trocaFainted(getJogador1());
             }
             if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                 trocaFainted(getJogador0());
             }
         } else if (getJogador0().getTime().get(0).valorAtributo(Atributo.SPD) < getJogador1().getTime().get(0).valorAtributo(Atributo.SPD)) {
@@ -460,6 +461,7 @@ public class Batalha {
                 trocaFainted(getJogador0());
             }
             if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
+                System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                 trocaFainted(getJogador1());
             }
         } else {
@@ -477,6 +479,7 @@ public class Batalha {
                     trocaFainted(getJogador0());
                 }
                 if (getJogador1().getTime().get(0).getStatus() == Status.FAINTED) {
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 2 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                     trocaFainted(getJogador1());
                 }
             } else {
@@ -492,6 +495,7 @@ public class Batalha {
                     trocaFainted(getJogador1());
                 }
                 if (getJogador0().getTime().get(0).getStatus() == Status.FAINTED) {
+                    System.out.printf(Main.ANSI_BLUE + "\t\t\tJogador 1 - %s\n\n" + Main.ANSI_RESET, getJogador0().getClass().toString().substring(14));
                     trocaFainted(getJogador0());
                 }
             }

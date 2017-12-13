@@ -4,7 +4,7 @@ public enum Tipo {
     NONE,
     BUG,
     DRAGON,
-    ELETRIC,
+    ELECTRIC,
     FIGHTING,
     FIRE,
     FLYING,

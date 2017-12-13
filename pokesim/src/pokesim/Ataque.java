@@ -214,7 +214,11 @@ public class Ataque {
     }
 
     public double getPpAtual() {
-        return ppAtual;
+        return this.ppAtual;
+    }
+
+    public double getPpMax() {
+        return this.ppMax;
     }
 
     public void setPower(double power) {
@@ -254,7 +258,7 @@ public class Ataque {
         Set<Tipo> tipos = new HashSet<Tipo>();
         tipos.add(Tipo.FIRE);
         tipos.add(Tipo.WATER);
-        tipos.add(Tipo.ELETRIC);
+        tipos.add(Tipo.ELECTRIC);
         tipos.add(Tipo.GRASS);
         tipos.add(Tipo.ICE);
         tipos.add(Tipo.PSYCHIC);

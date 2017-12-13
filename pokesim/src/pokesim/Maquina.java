@@ -30,7 +30,8 @@ public class Maquina extends Jogador {
     public int escolherAtaque() {
         System.out.println("Seus ataques dísponíveis são: ");
         for (Ataque ataque : getTime().get(0).getAtaques()) {
-            System.out.printf("%d - %s - %s\n", getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome(), ataque.getTipo());
+            System.out.printf("%d - %s - %s - (PP %.0f | %.0f)\n", getTime().get(0).getAtaques().indexOf(ataque) + 1, ataque.getNome(), ataque.getTipo(),
+                    ataque.getPpAtual(), ataque.getPpMax());
         }
         System.out.printf("Entre com sua escolha: ");
         System.out.printf(Main.ANSI_BLUE + "Escolhendo... \n" + Main.ANSI_RESET);
