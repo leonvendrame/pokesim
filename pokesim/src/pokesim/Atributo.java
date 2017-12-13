@@ -6,5 +6,7 @@ public enum Atributo {
     ATK,
     DEF,
     SPE,
-    SPD
+    SPD,
+    ACCURACY,
+    EVASION
 }

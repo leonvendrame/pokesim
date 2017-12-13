@@ -1,6 +1,10 @@
 package pokesim;
 
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Pokemon {
     private int     level;
@@ -24,6 +28,7 @@ public class Pokemon {
 
     Pokemon(int id, int level) {
         setLevel(level);
+        this.especie = new Especie(id);
         setHpMax(this.especie.calcularAtributo(Atributo.HPMAX, level));
         setHpAtual(this.especie.calcularAtributo(Atributo.HPATUAL, level));
         setAtk(this.especie.calcularAtributo(Atributo.ATK, level));
@@ -39,21 +44,22 @@ public class Pokemon {
         setConfusion(false);
         setFlinch(false);
         setStatus(Status.OK);
+        this.ataques = new ArrayList<>();
     }
 
-    public double valorAtributo(Atributo atrib) {
-        switch (atrib) {
+    public double valorAtributo(Atributo atributo) {
+        switch (atributo) {
             case ATK:
-                return ((this.atk) * (Math.max(2, 2 + modifierAtk) / Math.max(2, 2 - modifierAtk)));
+                return ((this.atk) * (Math.max(2, 2 + getModifierAtk()) / Math.max(2, 2 - getModifierAtk())));
 
             case DEF:
-                return ((this.def) * (Math.max(2, 2 + modifierDef) / Math.max(2, 2 - modifierDef)));
+                return ((this.def) * (Math.max(2, 2 + getModifierDef()) / Math.max(2, 2 - getModifierDef())));
 
             case SPE:
-                return ((this.spe) * (Math.max(2, 2 + modifierSpe) / Math.max(2, 2 - modifierSpe)));
+                return ((this.spe) * (Math.max(2, 2 + getModifierSpe()) / Math.max(2, 2 - getModifierSpe())));
 
             case SPD:
-                return ((this.spd) * (Math.max(2, 2 + modifierSpd) / Math.max(2, 2 - modifierSpd)));
+                return ((this.spd) * (Math.max(2, 2 + getModifierSpd()) / Math.max(2, 2 - getModifierSpd())));
 
             case HPMAX:
                 return this.hpMax;
@@ -67,11 +73,11 @@ public class Pokemon {
     }
 
     public Status getStatus() {
-        return status;
+        return this.status;
     }
 
     public int getLevel() {
-        return level;
+        return this.level;
     }
 
     public void setLevel(int level) {
@@ -79,11 +85,16 @@ public class Pokemon {
     }
 
     public void setHpAtual(double hpAtual) {
-        this.hpAtual = hpAtual;
-    }
-
-    public double getHpMax() {
-        return hpMax;
+        if (hpAtual <= 0) {
+            this.hpAtual = 0;
+            this.setStatus(Status.FAINTED);
+        } else {
+            if (hpAtual > valorAtributo(Atributo.HPMAX)) {
+                setHpAtual(valorAtributo(Atributo.HPMAX));
+            } else {
+                this.hpAtual = hpAtual;
+            }
+        }
     }
 
     public void setHpMax(double hpMax) {
@@ -107,31 +118,67 @@ public class Pokemon {
     }
 
     public void setModifierAccuracy(int modifierAccuracy) {
-        this.modifierAccuracy = modifierAccuracy;
+        if (modifierAccuracy < -6){
+            this.modifierAccuracy = -6;
+        } else if (modifierAccuracy > 6) {
+            this.modifierAccuracy = 6;
+        } else {
+            this.modifierAccuracy = modifierAccuracy;
+        }
     }
 
     public void setModifierEvasion(int modifierEvasion) {
-        this.modifierEvasion = modifierEvasion;
+        if (modifierEvasion < -6){
+            this.modifierEvasion = -6;
+        } else if (modifierEvasion > 6) {
+            this.modifierEvasion = 6;
+        } else {
+            this.modifierEvasion = modifierEvasion;
+        }
     }
 
     public void setModifierAtk(int modifierAtk) {
-        this.modifierAtk = modifierAtk;
+        if (modifierAtk < -6){
+            this.modifierAtk = -6;
+        } else if (modifierAtk > 6) {
+            this.modifierAtk = 6;
+        } else {
+            this.modifierAtk = modifierAtk;
+        }
     }
 
     public void setModifierDef(int modifierDef) {
-        this.modifierDef = modifierDef;
+        if (modifierDef < -6){
+            this.modifierDef = -6;
+        } else if (modifierDef > 6) {
+            this.modifierDef = 6;
+        } else {
+            this.modifierDef = modifierDef;
+        }
     }
 
     public void setModifierSpe(int modifierSpe) {
-        this.modifierSpe = modifierSpe;
+        if (modifierSpe < -6){
+            this.modifierSpe = -6;
+        } else if (modifierSpe > 6) {
+            this.modifierSpe = 6;
+        } else {
+            this.modifierSpe = modifierSpe;
+        }
     }
 
     public void setModifierSpd(int modifierSpd) {
-        this.modifierSpd = modifierSpd;
+        if (modifierSpd < -6){
+            this.modifierSpd = -6;
+        } else if (modifierSpd > 6) {
+            this.modifierSpd = 6;
+        } else {
+            this.modifierSpd = modifierSpd;
+        }
     }
 
     public boolean isConfusion() {
-        return confusion;
+        return this.confusion;
     }
 
     public void setConfusion(boolean confusion) {
@@ -139,7 +186,7 @@ public class Pokemon {
     }
 
     public boolean isFlinch() {
-        return flinch;
+        return this.flinch;
     }
 
     public void setFlinch(boolean flinch) {
@@ -151,18 +198,87 @@ public class Pokemon {
     }
 
     public Especie getEspecie() {
-        return especie;
-    }
-
-    public void setEspecie(Especie especie) {
-        this.especie = especie;
+        return this.especie;
     }
 
     public List<Ataque> getAtaques() {
-        return ataques;
+        return this.ataques;
     }
 
-    public void setAtaques(List<Ataque> ataques) {
-        this.ataques = ataques;
+    public void novoAtaque(int id) {
+        if (id > 0) {
+            int idReal = id - 1;
+            String[] parametros = null;
+            String[][] tabAtaques = Batalha.getTabelaAtaque();
+            String opcao = tabAtaques[idReal][6];
+            Ataque novo = null;
+            parametros = tabAtaques[idReal][7].split(", |\\r");
+
+            if (opcao.compareToIgnoreCase("comum") == 0) {
+                novo = new Ataque(id);
+            } else if (opcao.compareToIgnoreCase("hp") == 0) {
+                novo = new AtaqueHP(id, parametros);
+            } else if (opcao.compareToIgnoreCase("multihit") == 0) {
+                novo = new AtaqueMultihit(id, parametros);
+            } else if (opcao.compareToIgnoreCase("modifier") == 0) {
+                novo = new AtaqueModifier(id, parametros);
+            } else if (opcao.compareToIgnoreCase("status") == 0) {
+                novo = new AtaqueStatus(id,parametros);
+            } else if (opcao.compareToIgnoreCase("fixo") == 0) {
+                novo = new AtaqueFixo(id, parametros);
+            } else if (opcao.compareToIgnoreCase("charge") == 0) {
+                novo = new AtaqueCharge(id);
+            }
+            if (novo != null) {
+                adicionarAtaque(novo);
+            }
+        }
+        return;
+    }
+
+    private void adicionarAtaque(Ataque ataque) {
+        if (this.getAtaques().size() < 4) {
+            this.getAtaques().add(ataque);
+        }
+        return;
+    }
+
+    public void getInfoPokemon() {
+        System.out.println(this.getEspecie().getNome());
+        if (this.getEspecie().getTipo1() != null)
+            System.out.println(this.getEspecie().getTipo1().toString());
+        if (this.getEspecie().getTipo2() != null)
+            System.out.println(this.getEspecie().getTipo2().toString());
+        System.out.printf("LEVEL: \t\t%d\n", getLevel());
+        System.out.printf("MAX HP: \t%.2f\n", this.valorAtributo(Atributo.HPMAX));
+        System.out.printf("HP ATUAL: \t%.2f\n", this.valorAtributo(Atributo.HPATUAL));
+        System.out.printf("ATK: \t\t%.2f\n", this.valorAtributo(Atributo.ATK));
+        System.out.printf("DEF: \t\t%.2f\n", this.valorAtributo(Atributo.DEF));
+        System.out.printf("SPE: \t\t%.2f\n", this.valorAtributo(Atributo.SPE));
+        System.out.printf("SPD: \t\t%.2f\n\n", this.valorAtributo(Atributo.SPD));
+    }
+
+    public int getModifierAccuracy() {
+        return this.modifierAccuracy;
+    }
+
+    public int getModifierEvasion() {
+        return this.modifierEvasion;
+    }
+
+    public int getModifierAtk() {
+        return this.modifierAtk;
+    }
+
+    public int getModifierDef() {
+        return this.modifierDef;
+    }
+
+    public int getModifierSpe() {
+        return this.modifierSpe;
+    }
+
+    public int getModifierSpd() {
+        return this.modifierSpd;
     }
 }
