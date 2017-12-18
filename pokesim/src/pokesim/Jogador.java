@@ -78,7 +78,7 @@ public abstract class Jogador {
         System.out.printf("Entre com sua escolha: ");
         opcao = scanner.nextInt();
         opcao--;
-        while (opcao < 0 || opcao > getTime().get(0).getAtaques().size() - 1) {
+        while (opcao < 0 || opcao > getTime().get(0).getAtaques().size() - 1  || getTime().get(0).getAtaques().get(opcao).getPpAtual() == 0) {
             System.out.println(Main.ANSI_RED + "Opção Inválida, por favor escolha novamente." + Main.ANSI_RESET);
             System.out.printf("Entre com sua escolha: ");
             opcao = scanner.nextInt();
@@ -111,7 +111,8 @@ public abstract class Jogador {
         }
 
         if (getTime().get(0).getAtaques().get(ataqueEscolha).getPpAtual() < 1) {
-            System.out.printf(Main.ANSI_RED + "O ataque escolhido não pode ser utilizado.\n" + Main.ANSI_RESET);
+            System.out.printf(Main.ANSI_RED + "O ataque escolhido não pode ser utilizado.\n\n" + Main.ANSI_RESET);
+            return;
         }
 
         Pokemon atacante;

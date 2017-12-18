@@ -374,6 +374,7 @@ public class Batalha {
 
     public boolean continuarJogo() {
         boolean pokemonJog0 = false, pokemonJog1 = false;
+        boolean continua = false;
         for (Pokemon pokemon : this.jogador0.getTime()) {
             if (pokemon.getStatus() != Status.FAINTED) {
                 pokemonJog0 = true;
@@ -385,13 +386,20 @@ public class Batalha {
             }
         }
 
+        continua = pokemonJog0 && pokemonJog1;
+
+        if (getJogador0().todosFainted() && getJogador0().todosSemPp() &&
+                getJogador1().todosFainted() && getJogador1().todosSemPp()) {
+            continua = false;
+        }
+
         if (!pokemonJog0 && pokemonJog1) {
             setVencedorId(2);
         } else if (pokemonJog0 && !pokemonJog1) {
             setVencedorId(1);
         }
 
-        return (pokemonJog0 && pokemonJog1);
+        return continua;
     }
 
     public void executarTurno() {
